@@ -1,13 +1,24 @@
 def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     
-    ''' VSP_type это VSP_type
-    ' Main_type это Main_type
-    ' Radius это R_m
-    ' h это h_mm
-    ' V это V_km/h
-    ' Pst это PST_ts
-    ' Sh_Kol это S_mm
-    ' f_tr это f_tr
+    '''
+    'VSP_type это VSP_type - тип всп (1 - б.п., 2 - з.п.)
+    ' Main_type это Main_type - состояние пути (1 - отличное или хорошее, 2 - удовлетворительное)
+    ' Radius это R_m - радиус кривизны учатска, радиус кривизны прямого участка принимается 10000 м
+    ' h это h_mm - возвышение наружнего рельса, мм
+    ' V это V_km/h - скорость движения экипажа, км/ч
+    ' Pst это PST_ts - это осевая нагрузка, тс 
+    ' Sh_Kol это S_mm - значение ширины колеи, мм
+    ' f_tr это ftr - коэффициент трения
+
+     outarray - это переменные выходных значиний (средние значения и СКО сил)
+     mean_ - это среднее значение силы, кН
+     RMS - это СКО силы, кН
+     Q_ - это вертикальная сил
+     Y_ - это боковая сила
+     H - это рамная сила
+     1,2,3,4 - номер оси в экипаже (в экипаже принято две тележки по две оси в каждой)
+     r,l - правое или левое колесо 
+
     ' outarray1 это mean_Q(V)_1l
     ' outarray2 это mean_Q(V)_2l
     ' outarray3 это mean_Q(V)_1r
@@ -16,6 +27,10 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     ' outarray6 это mean_Q(V)_4l
     ' outarray7 это mean_Q(V)_3r
     ' outarray8 это mean_Q(V)_4r
+    Mean_Q_L = (abs(outarray1)+abs(outarray2)+abs(outarray5)+abs(outarray6))/4
+    Mean_Q_R = (abs(outarray3)+abs(outarray4)+abs(outarray7)+abs(outarray8))/4
+    Mean_Q = (Mean_Q_L+Mean_Q_R)/2
+    
     ' outarray9 это RMS_Q(V)_1l
     ' outarray10 это RMS_Q(V)_2l
     ' outarray11 это RMS_Q(V)_1r
@@ -24,6 +39,12 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     ' outarray14 это RMS_Q(V)_4l
     ' outarray15 это RMS_Q(V)_3r
     ' outarray16 это RMS_Q(V)_4r
+    Rms_Q_L = ((abs(outarray9)**2+abs(outarray10)**2+abs(outarray13)**2+abs(outarray14)**2)/4)**0.5
+    Rms_Q_R = ((abs(outarray11)**2+abs(outarray12)**2+abs(outarray15)**2+abs(outarray16)**2)/4)**0.5
+    Rms_Q = ((Mean_Q_L**2+Mean_Q_R**2)/2)**0.5
+
+
+    
     ' outarray17 это mean_Y(L)_1l
     ' outarray18 это mean_Y(L)_2l
     ' outarray19 это mean_Y(L)_1r
@@ -32,6 +53,13 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     ' outarray22 это mean_Y(L)_4l
     ' outarray23 это mean_Y(L)_3r
     ' outarray24 это mean_Y(L)_4r
+
+    Mean_Y_L = (abs(outarray17)+abs(outarray18)+abs(outarray21)+abs(outarray22))/4
+    Mean_Y_R = (abs(outarray19)+abs(outarray20)+abs(outarray23)+abs(outarray24))/4
+    Mean_Y = (Mean_Y_L+Mean_Y_R)/2
+
+
+
     ' outarray25 это RMS_Y(L)_1l
     ' outarray26 это RMS_Y(L)_2l
     ' outarray27 это RMS_Y(L)_1r
@@ -40,10 +68,25 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     ' outarray30 это RMS_Y(L)_4l
     ' outarray31 это RMS_Y(L)_3r
     ' outarray32 это RMS_Y(L)_4r
+
+    Rms_Y_L = ((abs(outarray25)**2+abs(outarray26)**2+abs(outarray29)**2+abs(outarray30)**2)/4)**0.5
+    Rms_Y_R = ((abs(outarray27)**2+abs(outarray28)**2+abs(outarray31)**2+abs(outarray32)**2)/4)**0.5
+    Rms_Y = ((Rms_Y_L**2+Rms_Y_R**2)/2)**0.5
+
+    
     ' outarray33 это mean_H1
     ' outarray34 это mean_H2
     ' outarray35 это mean_H3
     ' outarray36 это mean_H4
+    #'средние значения
+    Mean_H = round(((abs(outarray33)+abs(outarray34)+abs(outarray35)+abs(outarray36))/4),1)
+    
+    #'СКО
+    Rms_H = round((((abs(outarray37)**2+abs(outarray38)**2+abs(outarray39)**2+abs(outarray40)**2)/4)**0.5),1)
+    
+
+
+
     ' outarray37 это RMS_H1
     ' outarray38 это RMS_H2
     ' outarray39 это RMS_H3
@@ -1742,28 +1785,92 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     if (outarray40>300):
         outarray40 = 300
 
+    #'Осредняем силы по нитям и в общем
+
+    #'Вертикальные силы
+
+    #'средние значения
+    Mean_Q_L = round(((abs(outarray1)+abs(outarray2)+abs(outarray5)+abs(outarray6))/4),1)
+    Mean_Q_R = round(((abs(outarray3)+abs(outarray4)+abs(outarray7)+abs(outarray8))/4),1)
+    Mean_Q = (Mean_Q_L+Mean_Q_R)/2
+
+    #'СКО
+    Rms_Q_L = round((((abs(outarray9)**2+abs(outarray10)**2+abs(outarray13)**2+abs(outarray14)**2)/4)**0.5),1)
+    Rms_Q_R = round((((abs(outarray11)**2+abs(outarray12)**2+abs(outarray15)**2+abs(outarray16)**2)/4)**0.5),1)
+    Rms_Q = round((((Rms_Q_L**2+Rms_Q_R**2)/2)**0.5),1)
+
+
+    #'Боковые силы
+    
+    #'средние значения
+    Mean_Y_L = round(((abs(outarray17)+abs(outarray18)+abs(outarray21)+abs(outarray22))/4),1)
+    Mean_Y_R = round(((abs(outarray19)+abs(outarray20)+abs(outarray23)+abs(outarray24))/4),1)
+    Mean_Y = (Mean_Y_L+Mean_Y_R)/2
+
+    #'СКО
+    Rms_Y_L = round((((abs(outarray25)**2+abs(outarray26)**2+abs(outarray29)**2+abs(outarray30)**2)/4)**0.5),1)
+    Rms_Y_R = round((((abs(outarray27)**2+abs(outarray28)**2+abs(outarray31)**2+abs(outarray32)**2)/4)**0.5),1)
+    Rms_Y = round((((Rms_Y_L**2+Rms_Y_R**2)/2)**0.5),1)
+
+    #'Рамные силы
+
+    #'средние значения
+    Mean_H = round(((abs(outarray33)+abs(outarray34)+abs(outarray35)+abs(outarray36))/4),1)
+    
+    #'СКО
+    Rms_H = round((((abs(outarray37)**2+abs(outarray38)**2+abs(outarray39)**2+abs(outarray40)**2)/4)**0.5),1)
+
+
+
+
+
     print ("Значения сил, действующие в системе 'колесо-рельс'\nпри движении грузового вагона и следующих условиях:")
     print ("Тип В.С.П. - ",VSP, "\nСостояние пути - ", MAINT, "\nРадиус кривой, м -", Rad)
     print ("Возвышение наружнего рельса, мм - ", H, "\nСкорость движения, км/ч - ", v, "\nОсевая нагрузка, тс -", Pos)
     print ("Ширина колеи, мм - ", SHK, "\nКоэффициент трения в системе 'колесо-рельс' -", FTR)
     print ()
-    print ("Средние значения вертикальных сил, кН:")
+    print ("Средние значения вертикальных сил по каждому колесу, кН:")
     print (outarray1, outarray2, outarray3, outarray4, outarray5,outarray6, outarray7, outarray8)
     print ()
-    print ("СКО вертикальных сил, кН:")
+    print ("СКО вертикальных сил по каждому колесу, кН:")
     print (outarray9, outarray10, outarray11, outarray12, outarray13,outarray14, outarray15, outarray16)
     print ()
-    print ("Cредние значения боковых сил, кН")
+    print ("Cредние значения боковых сил по каждому колесу, кН")
     print (outarray17, outarray18, outarray19, outarray20, outarray21,outarray22, outarray23, outarray24)
     print ()
-    print ("СКО боковых сил, кН")
+    print ("СКО боковых сил по каждому колесу, кН")
     print (outarray25, outarray26, outarray27, outarray28, outarray29,outarray30, outarray31, outarray32)
     print ()
-    print ("Cредние значения рамных сил, кН")
+    print ("Cредние значения рамных сил по каждой оси, кН")
     print (outarray33, outarray34, outarray35, outarray36)
     print ()
-    print ("СКО рамных сил, кН")
+    print ("СКО рамных сил по каждой оси, кН")
     print (outarray37, outarray38, outarray39, outarray40)
+    print ()
+    print ()
+
+    print ("ИТОГОВЫЕ ЗНАЧЕНИЯ ВОЗДЕЙСТВИЯ:")
+    print ()
+    print ("Средние значения вертикальных сил `колесо-рельс` по левой нити, по правой нити, в среднем по экипажу кН:")
+    print (Mean_Q_L, Mean_Q_R, Mean_Q)
+    print ()
+    print ("СКО значений вертикальных сил `колесо-рельс`по левой нити, по правой нити, в среднем по экипажу кН:")
+    print (Rms_Q_L, Rms_Q_R, Rms_Q)
+    print ()
+    print ("Средние значения боковых сил `колесо-рельс` по левой нити, по правой нити, в среднем по экипажу кН:")
+    print (Mean_Y_L, Mean_Y_R, Mean_Y)
+    print ()
+    print ("СКО значений боковых сил `колесо-рельс` по левой нити, по правой нити, в среднем по экипажу кН:")
+    print (Rms_Y_L, Rms_Y_R, Rms_Y)
+    print ()
+    print ("Средние значения рамных сил в среднем по экипажу кН:")
+    print (Mean_H)
+    print ()
+    print ("СКО значений рамных сил в среднем по экипажу кН:")
+    print (Rms_H)
+
+
+    
 
 print (GR_VagoN_Force (1, 1, 250, 140, 80, 27.5, 1520, 0.25))
  
