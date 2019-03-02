@@ -1820,6 +1820,10 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     #'СКО
     Rms_H = round((((abs(outarray37)**2+abs(outarray38)**2+abs(outarray39)**2+abs(outarray40)**2)/4)**0.5),1)
 
+    outarray = [outarray1, outarray2, outarray3, outarray4, outarray5,outarray6, outarray7, outarray8,outarray9, outarray10, outarray11, outarray12, outarray13,outarray14, outarray15, outarray16,outarray17, outarray18, outarray19, outarray20, outarray21,outarray22, outarray23, outarray24,outarray25, outarray26, outarray27, outarray28, outarray29,outarray30, outarray31, outarray32, outarray33, outarray34, outarray35, outarray36, outarray37, outarray38, outarray39, outarray40]
+    for el in range(0,len(outarray)):
+        outarray[el]=abs(round(outarray[el], 1))
+
 
 
 
@@ -1830,44 +1834,42 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     print ("Ширина колеи, мм - ", SHK, "\nКоэффициент трения в системе 'колесо-рельс' -", FTR)
     print ()
     print ("Средние значения вертикальных сил по каждому колесу, кН:")
-    print (outarray1, outarray2, outarray3, outarray4, outarray5,outarray6, outarray7, outarray8)
+    print ('1_ось_лев_колесо= {};\n2_ось_лев_колесо= {};\n1_ось_прав_колесо= {};\n2_ось_прав_колесо= {};\n3_ось_лев_колесо= {};\n4_ось_лев_колесо= {};\n3_ось_прав_колесо= {};\n4_ось_прав_колесо= {}.'.format (outarray[0], outarray[1], outarray[2], outarray[3], outarray[4],outarray[5], outarray[6], outarray[7]))
     print ()
     print ("СКО вертикальных сил по каждому колесу, кН:")
-    print (outarray9, outarray10, outarray11, outarray12, outarray13,outarray14, outarray15, outarray16)
+    print ('1_ось_лев_колесо= {};\n2_ось_лев_колесо= {};\n1_ось_прав_колесо= {};\n2_ось_прав_колесо= {};\n3_ось_лев_колесо= {};\n4_ось_лев_колесо= {};\n3_ось_прав_колесо= {};\n4_ось_прав_колесо= {}.'.format (outarray[8], outarray[9], outarray[10], outarray[11], outarray[12],outarray[13], outarray[14], outarray[15]))
     print ()
     print ("Cредние значения боковых сил по каждому колесу, кН")
-    print (outarray17, outarray18, outarray19, outarray20, outarray21,outarray22, outarray23, outarray24)
+    print ('1_ось_лев_колесо= {};\n2_ось_лев_колесо= {};\n1_ось_прав_колесо= {};\n2_ось_прав_колесо= {};\n3_ось_лев_колесо= {};\n4_ось_лев_колесо= {};\n3_ось_прав_колесо= {};\n4_ось_прав_колесо= {}.'.format (outarray[16], outarray[17], outarray[18], outarray[19], outarray[20],outarray[21], outarray[22], outarray[23]))
     print ()
     print ("СКО боковых сил по каждому колесу, кН")
-    print (outarray25, outarray26, outarray27, outarray28, outarray29,outarray30, outarray31, outarray32)
+    print ('1_ось_лев_колесо= {};\n2_ось_лев_колесо= {};\n1_ось_прав_колесо= {};\n2_ось_прав_колесо= {};\n3_ось_лев_колесо= {};\n4_ось_лев_колесо= {};\n3_ось_прав_колесо= {};\n4_ось_прав_колесо= {}.'.format (outarray[24], outarray[25], outarray[26], outarray[27], outarray[28],outarray[29], outarray[30], outarray[31]))
     print ()
     print ("Cредние значения рамных сил по каждой оси, кН")
-    print (outarray33, outarray34, outarray35, outarray36)
+    print ('1_ось= {};\n2_ось= {};\n3_ось= {};\n4_ось= {}.'.format (outarray[32], outarray[33], outarray[34], outarray[35]))
     print ()
     print ("СКО рамных сил по каждой оси, кН")
-    print (outarray37, outarray38, outarray39, outarray40)
+    print ('1_ось= {};\n2_ось= {};\n3_ось= {};\n4_ось= {}.'.format (outarray[36], outarray[37], outarray[38], outarray[39]))
     print ()
     print ()
 
     print ("ИТОГОВЫЕ ЗНАЧЕНИЯ ВОЗДЕЙСТВИЯ:")
     print ()
-    print ("Средние значения вертикальных сил `колесо-рельс` по левой нити, по правой нити, в среднем по экипажу кН:")
-    print (Mean_Q_L, Mean_Q_R, Mean_Q)
+    print ("Средние значения вертикальных сил `колесо-рельс`, кН:")
+    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format (Mean_Q_L, Mean_Q_R, Mean_Q))
     print ()
-    print ("СКО значений вертикальных сил `колесо-рельс`по левой нити, по правой нити, в среднем по экипажу кН:")
-    print (Rms_Q_L, Rms_Q_R, Rms_Q)
+    print ("СКО значений вертикальных сил `колесо-рельс, кН:")
+    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Rms_Q_L, Rms_Q_R, Rms_Q))
     print ()
-    print ("Средние значения боковых сил `колесо-рельс` по левой нити, по правой нити, в среднем по экипажу кН:")
-    print (Mean_Y_L, Mean_Y_R, Mean_Y)
+    print ("Средние значения боковых сил `колесо-рельс`, кН:")
+    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Mean_Y_L, Mean_Y_R, Mean_Y))
     print ()
-    print ("СКО значений боковых сил `колесо-рельс` по левой нити, по правой нити, в среднем по экипажу кН:")
-    print (Rms_Y_L, Rms_Y_R, Rms_Y)
+    print ("СКО значений боковых сил `колесо-рельс`:")
+    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Rms_Y_L, Rms_Y_R, Rms_Y))
     print ()
-    print ("Средние значения рамных сил в среднем по экипажу кН:")
-    print (Mean_H)
+    print ("Средние значения рамных сил в среднем по экипажу кН: = ", Mean_H)
     print ()
-    print ("СКО значений рамных сил в среднем по экипажу кН:")
-    print (Rms_H)
+    print ("СКО значений рамных сил в среднем по экипажу кН: =", Rms_H)
 
 
     
