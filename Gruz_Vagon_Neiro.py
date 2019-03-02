@@ -93,7 +93,17 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
     ' outarray40 это RMS_H4'''
     import math
     VSP = VSP_type
+    if VSP_type == 1:
+        VSP = "бесст.путь"
+    if VSP_type == 2:
+        VSP = "звен.путь"
+
     MAINT = Main_type
+    if Main_type == 1:
+        MAINT = "'отл' или 'хор'"
+    if VSP_type == 2:
+        MAINT = "'удовл' или 'неуд'"
+        
     Rad = Radius
     H=h
     v = V
@@ -1874,6 +1884,6 @@ def GR_VagoN_Force (VSP_type, Main_type, Radius, h, V, Pst, Sh_Kol, f_tr):
 
     
 
-print (GR_VagoN_Force (1, 1, 250, 140, 80, 27.5, 1520, 0.25))
+print (GR_VagoN_Force (2, 2, 250, 140, 80, 27.5, 1520, 0.25))
  
 

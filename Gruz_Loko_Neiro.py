@@ -54,7 +54,17 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
     import math
 
     VSP = VSP_type
+    if VSP_type == 1:
+        VSP = "бесст.путь"
+    if VSP_type == 2:
+        VSP = "звен.путь"
+
     MAINT = Main_type
+    if Main_type == 1:
+        MAINT = "'отл' или 'хор'"
+    if VSP_type == 2:
+        MAINT = "'удовл' или 'неуд'"
+
     Rad = Radius
     H=h
     v = V
@@ -1265,7 +1275,13 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
     outarray = [outarray1, outarray2, outarray3, outarray4, outarray5,outarray6, outarray7, outarray8,outarray9, outarray10, outarray11, outarray12, outarray13,outarray14, outarray15, outarray16,outarray17, outarray18, outarray19, outarray20, outarray21,outarray22, outarray23, outarray24,outarray25, outarray26, outarray27, outarray28, outarray29,outarray30, outarray31, outarray32]
     for el in range(0,len(outarray)):
         outarray[el]=abs(round(outarray[el], 1))
+        
 
+    print ("Значения сил, действующие в системе 'колесо-рельс'\nпри движении грузового локомотива и следующих условиях:")
+    print ("Тип В.С.П. - ",VSP, "\nСостояние пути - ", MAINT, "\nРадиус кривой, м -", Rad)
+    print ("Возвышение наружнего рельса, мм - ", H, "\nСкорость движения, км/ч - ", v)
+    print ("Ширина колеи, мм - ", SHK, "\nКоэффициент трения в системе 'колесо-рельс' -", FTR)
+    print ()
     print ("Средние значения вертикальных сил по каждому колесу, кН:")
     print ('1_ось_лев_колесо= {};\n2_ось_лев_колесо= {};\n1_ось_прав_колесо= {};\n2_ось_прав_колесо= {};\n3_ось_лев_колесо= {};\n4_ось_лев_колесо= {};\n3_ось_прав_колесо= {};\n4_ось_прав_колесо= {}.'.format (outarray[0], outarray[1], outarray[2], outarray[3], outarray[4],outarray[5], outarray[6], outarray[7]))
     print ()
