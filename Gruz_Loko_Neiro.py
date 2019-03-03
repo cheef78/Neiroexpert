@@ -1,55 +1,55 @@
-def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
+def GR_Loko_Force (VSP_type, Condition, Radius, h, V, Sh_Kol, mu_fr,Show_or_return = "return"):
 
 
     '''VSP_type это VSP_type - тип всп (1 - б.п., 2 - з.п.)
-    ' Main_type это Main_type - состояние пути (1 - отличное или хорошее, 2 - удовлетворительное)
+    ' Condition это Condition - состояние пути (1 - отличное или хорошее, 2 - удовлетворительное)
     ' Radius это R_m - радиус кривизны учатска, радиус кривизны прямого участка принимается 10000 м
     ' h это h_mm - возвышение наружнего рельса, мм
     ' V это V_km/h - скорость движения экипажа, км/ч
     ' Sh_Kol это S_mm - значение ширины колеи, мм
-    ' f_tr это ftr - коэффициент трения
+    ' mu_fr это ftr - коэффициент трения
 
      outarray - это переменные выходных значиний (средние значения и СКО сил)
      mean_ - это среднее значение силы, кН
      RMS - это СКО силы, кН
-     Q_ - это вертикальная сил
-     Y_ - это боковая сила
+     F_vertical_ - это вертикальная сил
+     F_side_- это боковая сила
      1,2,3,4 - номер оси в экипаже (в экипаже принято две тележки по две оси в каждой)
      r,l - правое или левое колесо 
     
 
-    ' outarray1 это mean_Q_1l 
-    ' outarray2 это mean_Q_2l
-    ' outarray3 это mean_Q_1r
-    ' outarray4 это mean_Q_2r
-    ' outarray5 это mean_Q_3l
-    ' outarray6 это mean_Q_4l
-    ' outarray7 это mean_Q_3r
-    ' outarray8 это mean_Q_4r
-    ' outarray9 это RMS_Q_1l
-    ' outarray10 это RMS_Q_2l
-    ' outarray11 это RMS_Q_1r
-    ' outarray12 это RMS_Q_2r
-    ' outarray13 это RMS_Q_3l
-    ' outarray14 это RMS_Q_4l
-    ' outarray15 это RMS_Q_3r
-    ' outarray16 это RMS_Q_4r
-    ' outarray17 это mean_Y_1l
-    ' outarray18 это mean_Y_2l
-    ' outarray19 это mean_Y_1r
-    ' outarray20 это mean_Y_2r
-    ' outarray21 это mean_Y_3l
-    ' outarray22 это mean_Y_4l
-    ' outarray23 это mean_Y_3r
-    ' outarray24 это mean_Y_4r
-    ' outarray25 это RMS_Y_1l
-    ' outarray26 это RMS_Y_2l
-    ' outarray27 это RMS_Y_1r
-    ' outarray28 это RMS_Y_2r
-    ' outarray29 это RMS_Y_3l
-    ' outarray30 это RMS_Y_4l
-    ' outarray31 это RMS_Y_3r
-    ' outarray32 это RMS_Y_4r'''
+    ' outarray1 это mean_F_vertical_1l 
+    ' outarray2 это mean_F_vertical_2l
+    ' outarray3 это mean_F_vertical_1r
+    ' outarray4 это mean_F_vertical_2r
+    ' outarray5 это mean_F_vertical_3l
+    ' outarray6 это mean_F_vertical_4l
+    ' outarray7 это mean_F_vertical_3r
+    ' outarray8 это mean_F_vertical_4r
+    ' outarray9 это RMS_F_vertical_1l
+    ' outarray10 это RMS_F_vertical_2l
+    ' outarray11 это RMS_F_vertical_1r
+    ' outarray12 это RMS_F_vertical_2r
+    ' outarray13 это RMS_F_vertical_3l
+    ' outarray14 это RMS_F_vertical_4l
+    ' outarray15 это RMS_F_vertical_3r
+    ' outarray16 это RMS_F_vertical_4r
+    ' outarray17 это mean_F_side_1l
+    ' outarray18 это mean_F_side_2l
+    ' outarray19 это mean_F_side_1r
+    ' outarray20 это mean_F_side_2r
+    ' outarray21 это mean_F_side_3l
+    ' outarray22 это mean_F_side_4l
+    ' outarray23 это mean_F_side_3r
+    ' outarray24 это mean_F_side_4r
+    ' outarray25 это RMS_F_side_1l
+    ' outarray26 это RMS_F_side_2l
+    ' outarray27 это RMS_F_side_1r
+    ' outarray28 это RMS_F_side_2r
+    ' outarray29 это RMS_F_side_3l
+    ' outarray30 это RMS_F_side_4l
+    ' outarray31 это RMS_F_side_3r
+    ' outarray32 это RMS_F_side_4r'''
 
     import math
 
@@ -59,8 +59,8 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
     if VSP_type == 2:
         VSP = "звен.путь"
 
-    MAINT = Main_type
-    if Main_type == 1:
+    MAINT = Condition
+    if Condition == 1:
         MAINT = "'отл' или 'хор'"
     if VSP_type == 2:
         MAINT = "'удовл' или 'неуд'"
@@ -69,7 +69,7 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
     H=h
     v = V
     SHK=Sh_Kol
-    FTR=f_tr
+    FTR=mu_fr
      
 
 
@@ -79,11 +79,11 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
         VSP_type = 2
     VSP_type = (VSP_type - 1)
      
-    if (Main_type<1):
-        Main_type = 1
-    if (Main_type>2):
-        Main_type = 2
-    Main_type = (Main_type - 1)
+    if (Condition<1):
+        Condition = 1
+    if (Condition>2):
+        Condition = 2
+    Condition = (Condition - 1)
      
     if (Radius<150):
         Radius = 150
@@ -109,210 +109,210 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
         Sh_Kol = 1560
     Sh_Kol = (Sh_Kol - 1510) / 50
      
-    if (f_tr<0.1):
-        f_tr = 0.1
-    if (f_tr>0.7):
-        f_tr = 0.7
-    f_tr = (f_tr - 0.1) / 0.6
+    if (mu_fr<0.1):
+        mu_fr = 0.1
+    if (mu_fr>0.7):
+        mu_fr = 0.7
+    mu_fr = (mu_fr - 0.1) / 0.6
      
     netsum = 2.585002
     netsum = netsum + VSP_type * 0
-    netsum = netsum + Main_type * 0
+    netsum = netsum + Condition * 0
     netsum = netsum + Radius * -8.91273
     netsum = netsum + h * 0.8210604
     netsum = netsum + V * -3.471508
     netsum = netsum + Sh_Kol * 0
-    netsum = netsum + f_tr * -0.1360189
+    netsum = netsum + mu_fr * -0.1360189
     feature21 = 1 / (1 + math.exp(-netsum))
      
     netsum = -4.377504
     netsum = netsum + VSP_type * 0
-    netsum = netsum + Main_type * -1.15781E-03
+    netsum = netsum + Condition * -1.15781E-03
     netsum = netsum + Radius * -80.54958
     netsum = netsum + h * -7.702893E-02
     netsum = netsum + V * 5.772938
     netsum = netsum + Sh_Kol * -3.005799E-03
-    netsum = netsum + f_tr * 2.041161E-02
+    netsum = netsum + mu_fr * 2.041161E-02
     feature22 = 1 / (1 + math.exp(-netsum))
      
     netsum = -3.933569
     netsum = netsum + VSP_type * -1.711932E-03
-    netsum = netsum + Main_type * 3.348329
+    netsum = netsum + Condition * 3.348329
     netsum = netsum + Radius * -9.856087
     netsum = netsum + h * 4.212798E-02
     netsum = netsum + V * -6.785546
     netsum = netsum + Sh_Kol * -2.193178E-02
-    netsum = netsum + f_tr * -0.115735
+    netsum = netsum + mu_fr * -0.115735
     feature23 = 1 / (1 + math.exp(-netsum))
      
     netsum = 1.203883
     netsum = netsum + VSP_type * 0
-    netsum = netsum + Main_type * -0.1876383
+    netsum = netsum + Condition * -0.1876383
     netsum = netsum + Radius * -0.4741783
     netsum = netsum + h * -1.473345
     netsum = netsum + V * -27.2589
     netsum = netsum + Sh_Kol * 2.778484E-02
-    netsum = netsum + f_tr * -2.686149E-02
+    netsum = netsum + mu_fr * -2.686149E-02
     feature24 = 1 / (1 + math.exp(-netsum))
      
     netsum = 0.1722996
     netsum = netsum + VSP_type * -4.179223E-02
-    netsum = netsum + Main_type * -3.111501
+    netsum = netsum + Condition * -3.111501
     netsum = netsum + Radius * -6.051737
     netsum = netsum + h * -1.546812
     netsum = netsum + V * 20.1687
     netsum = netsum + Sh_Kol * -6.053827E-02
-    netsum = netsum + f_tr * -0.27134
+    netsum = netsum + mu_fr * -0.27134
     feature25 = 1 / (1 + math.exp(-netsum))
      
     netsum = -3.066288
     netsum = netsum + VSP_type * 1.266568E-03
-    netsum = netsum + Main_type * 1.944989E-02
+    netsum = netsum + Condition * 1.944989E-02
     netsum = netsum + Radius * 25.41498
     netsum = netsum + h * -1.981775E-03
     netsum = netsum + V * 1.603726
     netsum = netsum + Sh_Kol * -3.990319E-03
-    netsum = netsum + f_tr * -6.385222E-02
+    netsum = netsum + mu_fr * -6.385222E-02
     feature26 = 1 / (1 + math.exp(-netsum))
      
     netsum = -2.120572
     netsum = netsum + VSP_type * -1.460704E-03
-    netsum = netsum + Main_type * -4.133869E-03
+    netsum = netsum + Condition * -4.133869E-03
     netsum = netsum + Radius * 7.307359
     netsum = netsum + h * -2.142782
     netsum = netsum + V * 7.809622
     netsum = netsum + Sh_Kol * -3.511675E-03
-    netsum = netsum + f_tr * -0.2647697
+    netsum = netsum + mu_fr * -0.2647697
     feature27 = 1 / (1 + math.exp(-netsum))
      
     netsum = 0.824843
     netsum = netsum + VSP_type * 0
-    netsum = netsum + Main_type * -0.1292598
+    netsum = netsum + Condition * -0.1292598
     netsum = netsum + Radius * -0.9879975
     netsum = netsum + h * -1.204435
     netsum = netsum + V * -13.94144
     netsum = netsum + Sh_Kol * 1.130541E-02
-    netsum = netsum + f_tr * 2.213776E-04
+    netsum = netsum + mu_fr * 2.213776E-04
     feature28 = 1 / (1 + math.exp(-netsum))
      
     netsum = 1.029858
     netsum = netsum + VSP_type * 1.767524E-03
-    netsum = netsum + Main_type * 0.9493096
+    netsum = netsum + Condition * 0.9493096
     netsum = netsum + Radius * 29.43046
     netsum = netsum + h * 0.8889506
     netsum = netsum + V * -8.378217
     netsum = netsum + Sh_Kol * 4.480276E-03
-    netsum = netsum + f_tr * 0.1820433
+    netsum = netsum + mu_fr * 0.1820433
     feature29 = 1 / (1 + math.exp(-netsum))
      
     netsum = 4.230172
     netsum = netsum + VSP_type * 0
-    netsum = netsum + Main_type * -4.297026E-02
+    netsum = netsum + Condition * -4.297026E-02
     netsum = netsum + Radius * -8.079624
     netsum = netsum + h * 1.305674
     netsum = netsum + V * -5.790204
     netsum = netsum + Sh_Kol * 4.882933E-03
-    netsum = netsum + f_tr * -11.42556
+    netsum = netsum + mu_fr * -11.42556
     feature210 = 1 / (1 + math.exp(-netsum))
      
     netsum = 0.850837
     netsum = netsum + VSP_type * 0
-    netsum = netsum + Main_type * 2.729965E-02
+    netsum = netsum + Condition * 2.729965E-02
     netsum = netsum + Radius * 24.26503
     netsum = netsum + h * -0.8527321
     netsum = netsum + V * 3.568127
     netsum = netsum + Sh_Kol * -7.076751E-04
-    netsum = netsum + f_tr * -1.893624
+    netsum = netsum + mu_fr * -1.893624
     feature211 = 1 / (1 + math.exp(-netsum))
      
     netsum = 5.964153
     netsum = netsum + VSP_type * 0.0101979
-    netsum = netsum + Main_type * 0.3099363
+    netsum = netsum + Condition * 0.3099363
     netsum = netsum + Radius * -0.5788043
     netsum = netsum + h * 1.326795
     netsum = netsum + V * -16.57725
     netsum = netsum + Sh_Kol * 1.407271E-02
-    netsum = netsum + f_tr * 0.1802763
+    netsum = netsum + mu_fr * 0.1802763
     feature212 = 1 / (1 + math.exp(-netsum))
      
     netsum = -7.644811E-02
     netsum = netsum + VSP_type * 0
-    netsum = netsum + Main_type * 0.3290109
+    netsum = netsum + Condition * 0.3290109
     netsum = netsum + Radius * 23.57824
     netsum = netsum + h * -1.216775
     netsum = netsum + V * 6.496041
     netsum = netsum + Sh_Kol * 5.68667E-03
-    netsum = netsum + f_tr * 0.441742
+    netsum = netsum + mu_fr * 0.441742
     feature213 = 1 / (1 + math.exp(-netsum))
      
     netsum = 5.85291
     netsum = netsum + VSP_type * 4.121559E-03
-    netsum = netsum + Main_type * 5.228132E-02
+    netsum = netsum + Condition * 5.228132E-02
     netsum = netsum + Radius * -5.183594
     netsum = netsum + h * -2.354057
     netsum = netsum + V * 1.04286
     netsum = netsum + Sh_Kol * 5.532813E-03
-    netsum = netsum + f_tr * -7.278997E-02
+    netsum = netsum + mu_fr * -7.278997E-02
     feature214 = 1 / (1 + math.exp(-netsum))
      
     netsum = 0.3596448
     netsum = netsum + VSP_type * -0.0986152
-    netsum = netsum + Main_type * -6.176906
+    netsum = netsum + Condition * -6.176906
     netsum = netsum + Radius * 5.511677
     netsum = netsum + h * -5.737221
     netsum = netsum + V * -7.14607
     netsum = netsum + Sh_Kol * -0.1854707
-    netsum = netsum + f_tr * 0.2085879
+    netsum = netsum + mu_fr * 0.2085879
     feature215 = 1 / (1 + math.exp(-netsum))
      
     netsum = -3.925175
     netsum = netsum + VSP_type * -2.069295E-02
-    netsum = netsum + Main_type * 1.198643
+    netsum = netsum + Condition * 1.198643
     netsum = netsum + Radius * 15.57942
     netsum = netsum + h * 4.30018
     netsum = netsum + V * -5.155819
     netsum = netsum + Sh_Kol * 7.023121E-02
-    netsum = netsum + f_tr * -0.3101979
+    netsum = netsum + mu_fr * -0.3101979
     feature216 = 1 / (1 + math.exp(-netsum))
      
     netsum = -0.4316418
     netsum = netsum + VSP_type * -0.0115965
-    netsum = netsum + Main_type * -1.766893
+    netsum = netsum + Condition * -1.766893
     netsum = netsum + Radius * -19.04112
     netsum = netsum + h * -0.1739395
     netsum = netsum + V * 8.193781
     netsum = netsum + Sh_Kol * 0
-    netsum = netsum + f_tr * -8.844902E-02
+    netsum = netsum + mu_fr * -8.844902E-02
     feature217 = 1 / (1 + math.exp(-netsum))
      
     netsum = 9.184696
     netsum = netsum + VSP_type * 2.459425E-02
-    netsum = netsum + Main_type * -5.261024
+    netsum = netsum + Condition * -5.261024
     netsum = netsum + Radius * 22.34481
     netsum = netsum + h * 5.298235
     netsum = netsum + V * -54.86484
     netsum = netsum + Sh_Kol * 0.2125103
-    netsum = netsum + f_tr * -0.5673731
+    netsum = netsum + mu_fr * -0.5673731
     feature218 = 1 / (1 + math.exp(-netsum))
      
     netsum = -2.788542
     netsum = netsum + VSP_type * -0.017276
-    netsum = netsum + Main_type * 1.277058
+    netsum = netsum + Condition * 1.277058
     netsum = netsum + Radius * -9.111587
     netsum = netsum + h * 4.142786
     netsum = netsum + V * -5.90767
     netsum = netsum + Sh_Kol * 8.827934E-02
-    netsum = netsum + f_tr * -0.2551651
+    netsum = netsum + mu_fr * -0.2551651
     feature219 = 1 / (1 + math.exp(-netsum))
      
     netsum = 0.5731257
     netsum = netsum + VSP_type * -2.299097E-02
-    netsum = netsum + Main_type * -2.863071
+    netsum = netsum + Condition * -2.863071
     netsum = netsum + Radius * -7.534512
     netsum = netsum + h * -1.145737
     netsum = netsum + V * 22.22261
     netsum = netsum + Sh_Kol * -4.156273E-02
-    netsum = netsum + f_tr * -0.3192002
+    netsum = netsum + mu_fr * -0.3192002
     feature220 = 1 / (1 + math.exp(-netsum))
      
     netsum = 3.353116E-02
@@ -1250,32 +1250,34 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
     #'Вертикальные силы
 
     #'средние значения
-    Mean_Q_L = round(((abs(outarray1)+abs(outarray2)+abs(outarray5)+abs(outarray6))/4),1)
-    Mean_Q_R = round(((abs(outarray3)+abs(outarray4)+abs(outarray7)+abs(outarray8))/4),1)
-    Mean_Q = (Mean_Q_L+Mean_Q_R)/2
+    Mean_F_vertical_L = round(((abs(outarray1)+abs(outarray2)+abs(outarray5)+abs(outarray6))/4),1)
+    Mean_F_vertical_R = round(((abs(outarray3)+abs(outarray4)+abs(outarray7)+abs(outarray8))/4),1)
+    Mean_Q = (Mean_F_vertical_L+Mean_F_vertical_R)/2
 
     #'СКО
-    Rms_Q_L = round((((abs(outarray9)**2+abs(outarray10)**2+abs(outarray13)**2+abs(outarray14)**2)/4)**0.5),1)
-    Rms_Q_R = round((((abs(outarray11)**2+abs(outarray12)**2+abs(outarray15)**2+abs(outarray16)**2)/4)**0.5),1)
-    Rms_Q = round((((Rms_Q_L**2+Rms_Q_R**2)/2)**0.5),1)
+    Rms_F_vertical_L = round((((abs(outarray9)**2+abs(outarray10)**2+abs(outarray13)**2+abs(outarray14)**2)/4)**0.5),1)
+    Rms_F_vertical_R = round((((abs(outarray11)**2+abs(outarray12)**2+abs(outarray15)**2+abs(outarray16)**2)/4)**0.5),1)
+    Rms_Q = round((((Rms_F_vertical_L**2+Rms_F_vertical_R**2)/2)**0.5),1)
 
 
     #'Боковые силы
     
     #'средние значения
-    Mean_Y_L = round(((abs(outarray17)+abs(outarray18)+abs(outarray21)+abs(outarray22))/4),1)
-    Mean_Y_R = round(((abs(outarray19)+abs(outarray20)+abs(outarray23)+abs(outarray24))/4),1)
-    Mean_Y = (Mean_Y_L+Mean_Y_R)/2
+    Mean_F_side_L = round(((abs(outarray17)+abs(outarray18)+abs(outarray21)+abs(outarray22))/4),1)
+    Mean_F_side_R = round(((abs(outarray19)+abs(outarray20)+abs(outarray23)+abs(outarray24))/4),1)
+    Mean_Y = (Mean_F_side_L+Mean_F_side_R)/2
 
     #'СКО
-    Rms_Y_L = round((((abs(outarray25)**2+abs(outarray26)**2+abs(outarray29)**2+abs(outarray30)**2)/4)**0.5),1)
-    Rms_Y_R = round((((abs(outarray27)**2+abs(outarray28)**2+abs(outarray31)**2+abs(outarray32)**2)/4)**0.5),1)
-    Rms_Y = round((((Rms_Y_L**2+Rms_Y_R**2)/2)**0.5),1)
+    Rms_F_side_L = round((((abs(outarray25)**2+abs(outarray26)**2+abs(outarray29)**2+abs(outarray30)**2)/4)**0.5),1)
+    Rms_F_side_R = round((((abs(outarray27)**2+abs(outarray28)**2+abs(outarray31)**2+abs(outarray32)**2)/4)**0.5),1)
+    Rms_Y = round((((Rms_F_side_L**2+Rms_F_side_R**2)/2)**0.5),1)
 
     outarray = [outarray1, outarray2, outarray3, outarray4, outarray5,outarray6, outarray7, outarray8,outarray9, outarray10, outarray11, outarray12, outarray13,outarray14, outarray15, outarray16,outarray17, outarray18, outarray19, outarray20, outarray21,outarray22, outarray23, outarray24,outarray25, outarray26, outarray27, outarray28, outarray29,outarray30, outarray31, outarray32]
     for el in range(0,len(outarray)):
         outarray[el]=abs(round(outarray[el], 1))
-        
+
+    if Show_or_return == 'return':
+        return(outarray) 
 
     print ("Значения сил, действующие в системе 'колесо-рельс'\nпри движении грузового локомотива и следующих условиях:")
     print ("Тип В.С.П. - ",VSP, "\nСостояние пути - ", MAINT, "\nРадиус кривой, м -", Rad)
@@ -1299,16 +1301,16 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
     print ("ИТОГОВЫЕ ЗНАЧЕНИЯ ВОЗДЕЙСТВИЯ:")
     print ()
     print ("Средние значения вертикальных сил `колесо-рельс`, кН:")
-    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format (Mean_Q_L, Mean_Q_R, Mean_Q))
+    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format (Mean_F_vertical_L, Mean_F_vertical_R, Mean_Q))
     print ()
     print ("СКО значений вертикальных сил `колесо-рельс, кН:")
-    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Rms_Q_L, Rms_Q_R, Rms_Q))
+    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Rms_F_vertical_L, Rms_F_vertical_R, Rms_Q))
     print ()
     print ("Средние значения боковых сил `колесо-рельс`, кН:")
-    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Mean_Y_L, Mean_Y_R, Mean_Y))
+    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Mean_F_side_L, Mean_F_side_R, Mean_Y))
     print ()
     print ("СКО значений боковых сил `колесо-рельс`:")
-    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Rms_Y_L, Rms_Y_R, Rms_Y))
+    print ('по левой нити= {};\nпо правой нити = {};\nв среднем по экипажу= {};'.format(Rms_F_side_L, Rms_F_side_R, Rms_Y))
     print ()
     
 
@@ -1316,6 +1318,5 @@ def GR_Loko_Force (VSP_type, Main_type, Radius, h, V, Sh_Kol, f_tr):
 
     
     
-print (GR_Loko_Force (1, 1, 250, 140, 80, 1520, 0.25))
+GR_Loko_Force (1, 1, 250, 140, 80, 1520, 0.25, "show")
  
-
