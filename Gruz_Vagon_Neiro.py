@@ -1,4 +1,4 @@
-def GR_VagoN_Force (VSP_type, Condition, Radius, h, V, axle_load, Sh_Kol, mu_fr):
+def GR_VagoN_Force (VSP_type, Condition, Radius, h, V, axle_load, Sh_Kol, mu_fr,Show_or_return = "return"):
     
     '''
     'VSP_type это VSP_type - тип всп (1 - б.п., 2 - з.п.)
@@ -1802,7 +1802,7 @@ def GR_VagoN_Force (VSP_type, Condition, Radius, h, V, axle_load, Sh_Kol, mu_fr)
     #'средние значения
     Mean_F_vertL = round(((abs(outarray1)+abs(outarray2)+abs(outarray5)+abs(outarray6))/4),1)
     Mean_F_vertR = round(((abs(outarray3)+abs(outarray4)+abs(outarray7)+abs(outarray8))/4),1)
-    Mean_F_vert = (Mean_F_vertL+Mean_F_vertR)/2
+    Mean_F_vert = round(((Mean_F_vertL+Mean_F_vertR)/2),1)
 
     #'СКО
     sigma_F_vertL = round((((abs(outarray9)**2+abs(outarray10)**2+abs(outarray13)**2+abs(outarray14)**2)/4)**0.5),1)
@@ -1815,7 +1815,7 @@ def GR_VagoN_Force (VSP_type, Condition, Radius, h, V, axle_load, Sh_Kol, mu_fr)
     #'средние значения
     Mean_F_sideL = round(((abs(outarray17)+abs(outarray18)+abs(outarray21)+abs(outarray22))/4),1)
     Mean_F_sideR = round(((abs(outarray19)+abs(outarray20)+abs(outarray23)+abs(outarray24))/4),1)
-    Mean_F_side = (Mean_F_sideL+Mean_F_sideR)/2
+    Mean_F_side = round(((Mean_F_sideL+Mean_F_sideR)/2),1)
 
     #'СКО
     sigma_F_sideL = round((((abs(outarray25)**2+abs(outarray26)**2+abs(outarray29)**2+abs(outarray30)**2)/4)**0.5),1)
@@ -1834,10 +1834,16 @@ def GR_VagoN_Force (VSP_type, Condition, Radius, h, V, axle_load, Sh_Kol, mu_fr)
     for el in range(0,len(outarray)):
         outarray[el]=abs(round(outarray[el], 1))
 
+    #Эта ветка выводит в память список списков который состоит из значений для далььнейших расчетов (Сред.знач верт. силы, СКО вертикал силы, Сред.знач. боковой силы, ско боковой силы)
+    #вывод идет как в целом по подвижному составу, так и отдельно по нитям
+    #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
+        
+    if Show_or_return == 'return':
+        return [[Mean_F_vert, sigma_F_vert,Mean_F_side, sigma_F_side], [Mean_F_vertL, sigma_F_vertL, Mean_F_sideL, sigma_F_sideL], [Mean_F_vertR, sigma_F_vertR, Mean_F_sideR, sigma_F_sideR]]
 
 
-
-
+    #эта ветка выводит на экран результаты расчетов, но в память их не загружает
+    
     print ("Значения сил, действующие в системе 'колесо-рельс'\nпри движении грузового вагона и следующих условиях:")
     print ("Тип В.С.П. - ",VSP, "\nСостояние пути - ", MAINT, "\nРадиус кривой, м -", Rad)
     print ("Возвышение наружнего рельса, мм - ", H, "\nСкорость движения, км/ч - ", v, "\nОсевая нагрузка, тс -", Pos)
@@ -1884,6 +1890,7 @@ def GR_VagoN_Force (VSP_type, Condition, Radius, h, V, axle_load, Sh_Kol, mu_fr)
 
     
 
-print (GR_VagoN_Force (2, 2, 250, 140, 80, 27.5, 1520, 0.25))
- 
+GR_VagoN_Force (2, 2, 250, 140, 80, 27.5, 1520, 0.25, 'show')
+print ()
+print (GR_VagoN_Force (2, 2, 250, 140, 80, 27.5, 1520, 0.25, 'return')) 
 

@@ -1280,9 +1280,16 @@ def Pass_Loko_Force (VSP_type, Condition, Radius, h, V, Sh_Kol, mu_fr,Show_or_re
     for el in range(0,len(outarray)):
         outarray[el]=abs(round(outarray[el], 1))
 
+    #Эта ветка выводит в память список списков который состоит из значений для далььнейших расчетов (Сред.знач верт. силы, СКО вертикал силы, Сред.знач. боковой силы, ско боковой силы)
+    #вывод идет как в целом по подвижному составу, так и отдельно по нитям
+    #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
+        
     if Show_or_return == 'return':
-        return (outarray) 
+        return [[Mean_Q, Rms_Q,Mean_Y, Rms_Y], [Mean_F_vertical_L, Rms_F_vertical_L, Mean_F_side_L, Rms_F_side_L], [Mean_F_vertical_R, Rms_F_vertical_R, Mean_F_side_R, Rms_F_side_R]]
 
+
+    #эта ветка выводит на экран результаты расчетов, но в память их не загружает
+    
     print ("Значения сил, действующие в системе 'колесо-рельс'\nпри движении пассажирского локомотива и следующих условиях:")
     print ("Тип В.С.П. - ",VSP, "\nСостояние пути - ", MAINT, "\nРадиус кривой, м -", Rad)
     print ("Возвышение наружнего рельса, мм - ", H, "\nСкорость движения, км/ч - ", v)
@@ -1320,4 +1327,4 @@ def Pass_Loko_Force (VSP_type, Condition, Radius, h, V, Sh_Kol, mu_fr,Show_or_re
    
     
 Pass_Loko_Force (1, 1, 250, 140, 80, 1520, 0.25, 'show')
- 
+print (Pass_Loko_Force (1, 1, 250, 140, 80, 1520, 0.25, 'return')) 
