@@ -1300,7 +1300,7 @@ def vagon_1 (input_val, Show_or_tell = "return"):
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
     if Show_or_tell == 'return':
-        return [[Mean_Q, sigma_Q,Mean_Y, sigma_Y], [Mean_F_vertL, sigma_F_vertL, Mean_F_sideL, sigma_F_sideL], [Mean_F_vertR, sigma_F_vertR, Mean_F_sideR, sigma_F_sideR]]
+        return [Mean_F_vertR, Mean_F_vertL, Mean_Q, sigma_F_vertR, sigma_F_vertL, sigma_Q, Mean_F_sideR, Mean_F_sideL, Mean_Y, sigma_F_sideR, sigma_F_sideL, sigma_Y]
 
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
         
@@ -2638,8 +2638,8 @@ def vagon_3 (input_val, Show_or_return = "return"):
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
     if Show_or_return == 'return':
-        return [[Mean_Q, Rms_Q,Mean_Y, Rms_Y], [Mean_F_vertical_L, Rms_F_vertical_L, Mean_F_side_L, Rms_F_side_L], [Mean_F_vertical_R, Rms_F_vertical_R, Mean_F_side_R, Rms_F_side_R]]
-
+        return [Mean_F_vertical_R, Mean_F_vertical_L, Mean_Q, Rms_F_vertical_R, Rms_F_vertical_L, Rms_Q, Mean_F_side_R, Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y]
+                
 
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
     
@@ -4533,9 +4533,8 @@ def vagon_2 (input_val, Show_or_return = "return"):
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
     if Show_or_return == 'return':
-        return [[Mean_F_vert, sigma_F_vert,Mean_F_side, sigma_F_side], [Mean_F_vertL, sigma_F_vertL, Mean_F_sideL, sigma_F_sideL], [Mean_F_vertR, sigma_F_vertR, Mean_F_sideR, sigma_F_sideR]]
-
-
+        return [Mean_F_vertR, Mean_F_vertL, Mean_F_vert, sigma_F_vertR, sigma_F_vertL, sigma_F_vert, Mean_F_sideR, Mean_F_sideL, Mean_F_side, sigma_F_sideR, sigma_F_sideL, sigma_F_side]
+        
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
     
     print ("Значения сил, действующие в системе 'колесо-рельс'\nпри движении грузового вагона и следующих условиях:")
@@ -5877,8 +5876,8 @@ def vagon_4 (input_val, Show_or_return = "return"):
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
     if Show_or_return == 'return':
-        return [[Mean_Q, Rms_Q,Mean_Y, Rms_Y], [Mean_F_vertical_L, Rms_F_vertical_L, Mean_F_side_L, Rms_F_side_L], [Mean_F_vertical_R, Rms_F_vertical_R, Mean_F_side_R, Rms_F_side_R]]
-
+        return [Mean_F_vertical_R, Mean_F_vertical_L, Mean_Q, Rms_F_vertical_R, Rms_F_vertical_L, Rms_Q, Mean_F_side_R, Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y]
+        
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
     
     print ("Значения сил, действующие в системе 'колесо-рельс'\nпри движении грузового локомотива и следующих условиях:")
