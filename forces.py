@@ -1291,6 +1291,18 @@ def vagon_1 (input_val, Show_or_tell = "return"):
     sigma_F_sideR = round((((abs(outarray27)**2+abs(outarray28)**2+abs(outarray31)**2+abs(outarray32)**2)/4)**0.5),1)
     sigma_Y = round((((sigma_F_sideL**2+sigma_F_sideR**2)/2)**0.5),1)
 
+    #'Рамные силы
+    
+    #'средние значения
+    Mean_Hp = abs(round((((outarray17)+(outarray18)+(outarray21)+(outarray22))/4),1) + round((((outarray19)+(outarray20)+(outarray23)+(outarray24))/4),1))
+    
+    #'СКО
+    sigma_Hp = sigma_Y 
+    
+
+
+
+
     outarray = [outarray1, outarray2, outarray3, outarray4, outarray5,outarray6, outarray7, outarray8,outarray9, outarray10, outarray11, outarray12, outarray13,outarray14, outarray15, outarray16,outarray17, outarray18, outarray19, outarray20, outarray21,outarray22, outarray23, outarray24,outarray25, outarray26, outarray27, outarray28, outarray29,outarray30, outarray31, outarray32]
     for el in range(0,len(outarray)):
         outarray[el]=abs(round(outarray[el], 1))
@@ -1300,7 +1312,7 @@ def vagon_1 (input_val, Show_or_tell = "return"):
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
     if Show_or_tell == 'return':
-        return [Mean_F_vertR, Mean_F_vertL, Mean_Q, sigma_F_vertR, sigma_F_vertL, sigma_Q, Mean_F_sideR, Mean_F_sideL, Mean_Y, sigma_F_sideR, sigma_F_sideL, sigma_Y]
+        return [Mean_F_vertR, Mean_F_vertL, Mean_Q, sigma_F_vertR, sigma_F_vertL, sigma_Q, Mean_F_sideR, Mean_F_sideL, Mean_Y, sigma_F_sideR, sigma_F_sideL, sigma_Y, Mean_Hp, sigma_Hp ]
 
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
         
@@ -2629,6 +2641,18 @@ def vagon_3 (input_val, Show_or_return = "return"):
     Rms_F_side_R = round((((abs(outarray27)**2+abs(outarray28)**2+abs(outarray31)**2+abs(outarray32)**2)/4)**0.5),1)
     Rms_Y = round((((Rms_F_side_L**2+Rms_F_side_R**2)/2)**0.5),1)
 
+
+    #'Рамные силы
+    
+    #'средние значения
+    Mean_Hp = abs(round((((outarray17)+(outarray18)+(outarray21)+(outarray22))/4),1) + round((((outarray19)+(outarray20)+(outarray23)+(outarray24))/4),1))
+    
+    #'СКО
+    sigma_Hp = Rms_Y 
+
+
+
+
     outarray = [outarray1, outarray2, outarray3, outarray4, outarray5,outarray6, outarray7, outarray8,outarray9, outarray10, outarray11, outarray12, outarray13,outarray14, outarray15, outarray16,outarray17, outarray18, outarray19, outarray20, outarray21,outarray22, outarray23, outarray24,outarray25, outarray26, outarray27, outarray28, outarray29,outarray30, outarray31, outarray32]
     for el in range(0,len(outarray)):
         outarray[el]=abs(round(outarray[el], 1))
@@ -2638,7 +2662,8 @@ def vagon_3 (input_val, Show_or_return = "return"):
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
     if Show_or_return == 'return':
-        return [Mean_F_vertical_R, Mean_F_vertical_L, Mean_Q, Rms_F_vertical_R, Rms_F_vertical_L, Rms_Q, Mean_F_side_R, Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y]
+        return [Mean_F_vertical_R, Mean_F_vertical_L, Mean_Q, Rms_F_vertical_R, Rms_F_vertical_L, Rms_Q, Mean_F_side_R,\
+                Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y, Mean_Hp, sigma_Hp]
                 
 
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
@@ -4533,7 +4558,8 @@ def vagon_2 (input_val, Show_or_return = "return"):
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
     if Show_or_return == 'return':
-        return [Mean_F_vertR, Mean_F_vertL, Mean_F_vert, sigma_F_vertR, sigma_F_vertL, sigma_F_vert, Mean_F_sideR, Mean_F_sideL, Mean_F_side, sigma_F_sideR, sigma_F_sideL, sigma_F_side]
+        return [Mean_F_vertR, Mean_F_vertL, Mean_F_vert, sigma_F_vertR, sigma_F_vertL, sigma_F_vert, Mean_F_sideR,\
+                Mean_F_sideL, Mean_F_side, sigma_F_sideR, sigma_F_sideL, sigma_F_side, Mean_H, sigma_H]
         
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
     
@@ -5867,6 +5893,15 @@ def vagon_4 (input_val, Show_or_return = "return"):
     Rms_F_side_R = round((((abs(outarray27)**2+abs(outarray28)**2+abs(outarray31)**2+abs(outarray32)**2)/4)**0.5),1)
     Rms_Y = round((((Rms_F_side_L**2+Rms_F_side_R**2)/2)**0.5),1)
 
+    #'Рамные силы
+    
+    #'средние значения
+    Mean_Hp = abs(round((((outarray17)+(outarray18)+(outarray21)+(outarray22))/4),1) + round((((outarray19)+(outarray20)+(outarray23)+(outarray24))/4),1))
+    
+    #'СКО
+    sigma_Hp = Rms_Y 
+
+
     outarray = [outarray1, outarray2, outarray3, outarray4, outarray5,outarray6, outarray7, outarray8,outarray9, outarray10, outarray11, outarray12, outarray13,outarray14, outarray15, outarray16,outarray17, outarray18, outarray19, outarray20, outarray21,outarray22, outarray23, outarray24,outarray25, outarray26, outarray27, outarray28, outarray29,outarray30, outarray31, outarray32]
     for el in range(0,len(outarray)):
         outarray[el]=abs(round(outarray[el], 1))
@@ -5876,7 +5911,8 @@ def vagon_4 (input_val, Show_or_return = "return"):
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
     if Show_or_return == 'return':
-        return [Mean_F_vertical_R, Mean_F_vertical_L, Mean_Q, Rms_F_vertical_R, Rms_F_vertical_L, Rms_Q, Mean_F_side_R, Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y]
+        return [Mean_F_vertical_R, Mean_F_vertical_L, Mean_Q, Rms_F_vertical_R, Rms_F_vertical_L, Rms_Q,\
+                Mean_F_side_R, Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y, Mean_Hp, sigma_Hp]
         
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
     
