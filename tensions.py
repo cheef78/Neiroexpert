@@ -46,13 +46,13 @@ def f_shpal(input):
        Выходные данные:
        (mean/sigma) F_shpal_vert/side, кН - среднее значение/СКО сил действующая от рельса на шпалу в вертикальной/горизонтальной плоскости
     '''
-    input[0] = Q_mean
-    input[1] = Q_rms
-    input[2] = Y_mean
-    input[3] = Y_rms
-    input[4] = Kg
-    input[5] = Kv
-    input[6] = l_shp
+    Q_mean = input[0]
+    Q_rms = input[1]
+    Y_mean = input[2]
+    Y_rms = input[3]
+    Kg = input[4]
+    Kv = input[5]
+    l_sh = pinput[6] 
     
     mean_F_shpal_vert = round((Q_mean*Kv*l_shp/2),1)
     mean_F_shpal_side = round ((Y_mean*Kg*l_shp/2),1)
@@ -71,11 +71,11 @@ def f_ballast (input):
        Выходные данные:
        mean/sigma/most_F_ballast, кПа  - среднее/ско/макс.вер напряжения, передающихся от подошвы шпалы на балласт
     '''
-    input[0] = Q_mean
-    input[1] = Q_rms
-    input[2] = Kv
-    input[3] = l_shp
-    input[4] = f_shp
+    Q_mean = input[0]
+    Q_rms = input[1]
+    Kv = input[2]
+    l_shp = input[3] 
+    f_shp = input[4] 
     mean_F_ballast = round((10000*(Q_mean*Kv*l_shp/2)/f_shp),1)
     sigma_F_ballast = round((10000*(Q_rms*Kv*l_shp/2)/f_shp),1)
     most_likely_F_ballast = round((mean_F_ballast+2.5*sigma_F_ballast),1)
@@ -93,10 +93,10 @@ def f_ploch (input):
        mean/sigma/most_F_ploch, кПа  - среднее/ско/макс.вер напряжения, передающиеся на основную площадку земляного полотна
 
     '''
-    input[0] = Q_mean
-    input[1] = Q_rms
-    input[2] = h_ballast
-    input[3] = ballast_type
+    Q_mean = input[0]
+    Q_rms = input[1] 
+    h_ballast = input[2]
+    ballast_type = input[3]
 
     import math
      
