@@ -6,8 +6,13 @@ def krom_tension(input_val):
     Y_rms = input_val[3] 
     Kg = input_val[4] 
     Kv = input_val[5] 
-    Wg = input_val[6] 
-    Wv = input_val[7] 
+    l_sh = input_val[6]
+    Wg = input_val[7] 
+    Wv = input_val[8]
+    f_shp = input_val[9]
+    h_ballast = input_val[10]
+    ballast_type = input_val[11]
+
     
     '''
        'Функция вычисления кромочных напряжений в рельсах
@@ -33,7 +38,7 @@ def krom_tension(input_val):
 
 
 
-def f_shpal(input):
+def f_shpal(input_val):
 
     '''
        Функция вычисления сил, передающихся на шпалы от рельса
@@ -46,13 +51,13 @@ def f_shpal(input):
        Выходные данные:
        (mean/sigma) F_shpal_vert/side, кН - среднее значение/СКО сил действующая от рельса на шпалу в вертикальной/горизонтальной плоскости
     '''
-    Q_mean = input[0]
-    Q_rms = input[1]
-    Y_mean = input[2]
-    Y_rms = input[3]
-    Kg = input[4]
-    Kv = input[5]
-    l_sh = pinput[6] 
+    Q_mean = input_val[0]
+    Q_rms = input_val[1]
+    Y_mean = input_val[2]
+    Y_rms = input_val[3]
+    Kg = input_val[4]
+    Kv = input_val[5]
+    l_shp = input_val[6] 
     
     mean_F_shpal_vert = round((Q_mean*Kv*l_shp/2),1)
     mean_F_shpal_side = round ((Y_mean*Kg*l_shp/2),1)
@@ -61,8 +66,20 @@ def f_shpal(input):
     return (mean_F_shpal_vert,sigma_F_shpal_vert, mean_F_shpal_side, sigma_F_shpal_side)
 
 
-def f_ballast (input):
+def f_ballast (input_val):
     ''' Функция вычисления напряжений, передающихся от подошвы шпалы на балласт
+    q_mean = input_val[0] 
+    q_rms = input_val[1] 
+    Y_mean = input_val[2] 
+    Y_rms = input_val[3] 
+    Kg = input_val[4] 
+    Kv = input_val[5] 
+    l_sh = input_val[6]
+    Wg = input_val[7] 
+    Wv = input_val[8]
+    f_shp = input_val[9]
+    h_ballast = input_val[10]
+    ballast_type = input_val[11]
        Исходные данные:
        Q_mean/rms, кН - вертикальная сила (среднее/СКО)
        Kv, cм^-1 - коэффициент отностительной жесткости рельсовой нити в вертик.плоскости
@@ -71,33 +88,46 @@ def f_ballast (input):
        Выходные данные:
        mean/sigma/most_F_ballast, кПа  - среднее/ско/макс.вер напряжения, передающихся от подошвы шпалы на балласт
     '''
-    Q_mean = input[0]
-    Q_rms = input[1]
-    Kv = input[2]
-    l_shp = input[3] 
-    f_shp = input[4] 
+    Q_mean = input_val[0]
+    Q_rms = input_val[1]
+    Kv = input_val[5]
+    l_shp = input_val[6] 
+    f_shp = input_val[9] 
     mean_F_ballast = round((10000*(Q_mean*Kv*l_shp/2)/f_shp),1)
     sigma_F_ballast = round((10000*(Q_rms*Kv*l_shp/2)/f_shp),1)
     most_likely_F_ballast = round((mean_F_ballast+2.5*sigma_F_ballast),1)
-    return (mean_F_ballast,sigma_F_ballast)
+    return (mean_F_ballast, sigma_F_ballast)
 
-def f_ploch (input):
+def f_ploch (input_val):
     
     
     '''
+       
+
        Функция вычисления напряжений, передающихся на основную площадку земляного полотна
        Исходные данные:
        Q_mean/rms, кН - вертикальная сила (среднее/СКО)
        h_ballast, мм - толщина балластного слоя
        ballast_type - признак рода балластного материала (1- щебень, 2 - песчано-гравийный, 3- песок, асбест
        mean/sigma/most_F_ploch, кПа  - среднее/ско/макс.вер напряжения, передающиеся на основную площадку земляного полотна
-
+       q_mean = input_val[0] 
+    q_rms = input_val[1] 
+    Y_mean = input_val[2] 
+    Y_rms = input_val[3] 
+    Kg = input_val[4] 
+    Kv = input_val[5] 
+    l_sh = input_val[6]
+    Wg = input_val[7] 
+    Wv = input_val[8]
+    f_shp = input_val[9]
+    h_ballast = input_val[10]
+    ballast_type = input_val[11]
     '''
-    Q_mean = input[0]
-    Q_rms = input[1] 
-    h_ballast = input[2]
-    ballast_type = input[3]
-
+    Q_mean = input_val[0]
+    Q_rms = input_val[1] 
+    h_ballast = input_val[10]
+    ballast_type = input_val[11]
+    
     import math
      
     if (Q_mean<0):
