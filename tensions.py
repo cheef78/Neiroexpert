@@ -1,3 +1,9 @@
+
+
+
+
+
+
 def krom_tension(input_val):
 
     q_mean = input_val[0] 
@@ -57,13 +63,17 @@ def f_shpal(input_val):
     Y_rms = input_val[3]
     Kg = input_val[4]
     Kv = input_val[5]
-    l_shp = input_val[6] 
+    l_shp = input_val[6]
+    Hp_mean = input_val[12]
+    Hp_rms = input_val[13]
     
     mean_F_shpal_vert = round((Q_mean*Kv*l_shp/2),1)
     mean_F_shpal_side = round ((Y_mean*Kg*l_shp/2),1)
+    mean_F_shpal_sdvig = round ((Hp_mean*Kg*l_shp/2),1)
     sigma_F_shpal_vert = round((Q_rms*Kv*l_shp/2),1)
     sigma_F_shpal_side = round ((Y_rms*Kg*l_shp/2),1)
-    return (mean_F_shpal_vert,sigma_F_shpal_vert, mean_F_shpal_side, sigma_F_shpal_side)
+    sigma_F_shpal_sdvig = round ((Hp_rms*Kg*l_shp/2),1)
+    return (mean_F_shpal_vert,sigma_F_shpal_vert, mean_F_shpal_side, sigma_F_shpal_side, mean_F_shpal_sdvig, sigma_F_shpal_sdvig)
 
 
 def f_ballast (input_val):
