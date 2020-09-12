@@ -18,7 +18,8 @@ def krom_tension(input_val):
     f_shp = input_val[9]
     h_ballast = input_val[10]
     ballast_type = input_val[11]
-
+    degre_1 = input_val[14]
+    degre_2 = input_val[15]
     
     '''
        'Функция вычисления кромочных напряжений в рельсах
@@ -40,13 +41,24 @@ def krom_tension(input_val):
     sigma_krom_outer = round((((10*(q_rms/(4*Kv*Wv)))**2+(10*(Y_rms/(4*Kg*Wg)))**2)**0.5),1)
     sigma_krom_inner = round((((10*(q_rms/(4*Kv*Wv)))**2+(10*(Y_rms/(4*Kg*Wg)))**2)**0.5),1)
     sigma_krom_midl = round((10*(q_rms/(4*Kv*Wv))),1)
-    return (mean_krom_outer,sigma_krom_outer, mean_krom_inner, sigma_krom_inner, mean_krom_midl, sigma_krom_midl) 
-
+    d_rail = (mean_krom_midl**2 + ((sigma_krom_outer**2+sigma_krom_inner**2)/4))**(degre_1/2)\
+             + (((mean_krom_outer-mean_krom_inner)/2)**2 + ((sigma_krom_outer**2-sigma_krom_inner**2)/4))**(degre_2/2) 
+    return (mean_krom_outer,sigma_krom_outer, mean_krom_inner, sigma_krom_inner, mean_krom_midl, sigma_krom_midl, d_rail) 
 
 
 def f_shpal(input_val):
 
     '''
+    input_val[14] = damage_koef['degre_1'].loc[damage_koef['name'] == 'fasten']
+    input_val[15] = damage_koef['degre_2'].loc[damage_koef['name'] == 'fasten']
+    input_val[16] = damage_koef['degre_1'].loc[damage_koef['name'] == 'tie']
+    input_val[17] = damage_koef['degre_2'].loc[damage_koef['name'] == 'tie']
+    input_val[18] = damage_koef['degre_1'].loc[damage_koef['name'] == 'shkol_dop']
+    input_val[19] = damage_koef['degre_2'].loc[damage_koef['name'] == 'shkol_dop']
+    input_val[20] = damage_koef['degre_1'].loc[damage_koef['name'] == 'plan_dop']
+    input_val[21] = damage_koef['degre_2'].loc[damage_koef['name'] == 'plan_dop']
+
+
        Функция вычисления сил, передающихся на шпалы от рельса
        Исходные данные:
        Q_mean/rms, кН - вертикальная сила (среднее/СКО)
@@ -66,18 +78,38 @@ def f_shpal(input_val):
     l_shp = input_val[6]
     Hp_mean = input_val[12]
     Hp_rms = input_val[13]
-    
+    Xfast_P = input_val[14]
+    Xfast_H = input_val[15]
+    Xtie_P = input_val[16]
+    Xtie_H = input_val[17]
+    Xshkol_P = input_val[18]
+    Xshkol_H = input_val[19]
+    Xplan_P = input_val[20]
+    Xplan_H = input_val[21]
     mean_F_shpal_vert = round((Q_mean*Kv*l_shp/2),1)
     mean_F_shpal_side = round ((Y_mean*Kg*l_shp/2),1)
     mean_F_shpal_sdvig = round ((Hp_mean*Kg*l_shp/2),1)
     sigma_F_shpal_vert = round((Q_rms*Kv*l_shp/2),1)
     sigma_F_shpal_side = round ((Y_rms*Kg*l_shp/2),1)
     sigma_F_shpal_sdvig = round ((Hp_rms*Kg*l_shp/2),1)
-    return (mean_F_shpal_vert,sigma_F_shpal_vert, mean_F_shpal_side, sigma_F_shpal_side, mean_F_shpal_sdvig, sigma_F_shpal_sdvig)
+    d_fast = (mean_F_shpal_vert**2 + sigma_F_shpal_vert**2)**(Xfast_P/2) + (mean_F_shpal_side**2 + sigma_F_shpal_side**2)**(Xfast_H/2) 
+    d_tie = (mean_F_shpal_vert**2 + sigma_F_shpal_vert**2)**(Xtie_P/2) + (mean_F_shpal_side**2 + sigma_F_shpal_side**2)**(Xtie_H/2) 
+    d_shkol = (mean_F_shpal_vert**2 + sigma_F_shpal_vert**2)**(Xshkol_P/2) + (mean_F_shpal_side**2 + sigma_F_shpal_side**2)**(Xshkol_H/2) 
+    d_plan = ((mean_F_shpal_sdvig**2 + sigma_F_shpal_sdvig**2)**(Xplan_H/2))/((mean_F_shpal_vert**2 + sigma_F_shpal_vert**2)**(Xplan_P/2)) 
+
+    return (mean_F_shpal_vert, sigma_F_shpal_vert, mean_F_shpal_side,\
+            sigma_F_shpal_side, mean_F_shpal_sdvig, sigma_F_shpal_sdvig,\
+            d_fast, d_tie, d_shkol, d_plan)
 
 
-def f_ballast (input_val):
+def f_ballast_opzp (input_val):
     ''' Функция вычисления напряжений, передающихся от подошвы шпалы на балласт
+    input_val[14] = damage_koef['degre_1'].loc[damage_koef['name'] == 'prof_dop'].values
+    input_val[15] = damage_koef['degre_2'].loc[damage_koef['name'] == 'prof_dop'].values
+    input_val[16] = damage_koef['degre_1'].loc[damage_koef['name'] == 'ballast'].values
+    input_val[17] = damage_koef['degre_2'].loc[damage_koef['name'] == 'ballast'].values
+    input_val[18] = damage_koef['degre_1'].loc[damage_koef['name'] == 'opzp'].values
+    input_val[19] = damage_koef['degre_2'].loc[damage_koef['name'] == 'opzp'].values
     q_mean = input_val[0] 
     q_rms = input_val[1] 
     Y_mean = input_val[2] 
@@ -105,12 +137,13 @@ def f_ballast (input_val):
     f_shp = input_val[9] 
     mean_F_ballast = round((10000*(Q_mean*Kv*l_shp/2)/f_shp),1)
     sigma_F_ballast = round((10000*(Q_rms*Kv*l_shp/2)/f_shp),1)
-    most_likely_F_ballast = round((mean_F_ballast+2.5*sigma_F_ballast),1)
-    return (mean_F_ballast, sigma_F_ballast)
+    Xprof_1 = input_val[14]
+    Xprof_2 = input_val[15]
+    Xball_1 = input_val[16]
+    Xball_2 = input_val[17]
+    Xopzp_1 = input_val[18] 
+    Xopzp_2 = input_val[19]
 
-def f_ploch (input_val):
-    
-    
     '''
        
 
@@ -292,8 +325,17 @@ def f_ploch (input_val):
 
     rms_F_ploch = round ((k_ploch*outarray2),1)
     
+    most_likely_F_ballast = round((mean_F_ballast+2.5*sigma_F_ballast),1)
+     
     most_likely_F_ploch = round ((mean_F_ploch+2.5*rms_F_ploch),1)
-    
-    return (mean_F_ploch,rms_F_ploch)
+
+    d_prof = (mean_F_ballast**2 + sigma_F_ballast**2)**(Xprof_1/2)
+    d_ball = (mean_F_ballast**2 + sigma_F_ballast**2)**(math.exp(most_likely_F_ballast/Xball_1))\
+             + (mean_F_ploch**2 + rms_F_ploch**2)**(math.exp(most_likely_F_ploch/Xopzp_1))
+    d_opzp = (mean_F_ploch**2 + rms_F_ploch**2)**(math.exp(most_likely_F_ploch/Xopzp_1))
+
+
+
+    return (mean_F_ballast, sigma_F_ballast, mean_F_ploch,rms_F_ploch, d_prof, d_ball, d_opzp)
 
 
