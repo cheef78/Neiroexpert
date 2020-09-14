@@ -1,6 +1,6 @@
 
 def vagon_1 (input_val, Show_or_tell = "return"):
-
+   
     VSP_type = input_val[0] 
     Condition = input_val[1] 
     Radius = input_val[2]
@@ -8,7 +8,23 @@ def vagon_1 (input_val, Show_or_tell = "return"):
     V = input_val[4]
     axle_load = input_val[5]
     Sh_Kol = input_val[6] 
-    mu_fr = input_val[7] 
+    mu_fr = input_val[7]
+
+    #вычисление контактных напряжений
+    from contact_pressure import contact_tension 
+    input_val1 = [V,axle_load, mu_fr, Radius, h, Sh_Kol]
+    
+    cont_press = contact_tension(input_val1)
+    
+    MeanP1NarkPa = cont_press[0]
+    RmsP1NarkPa = cont_press[1]
+    MeanP1VnrkPa  = cont_press[2]
+    RmsP1VnrkPa = cont_press[3]
+    MeanP2NarkPa = cont_press[4]
+    RmsP2NarkPa = cont_press[5]
+    MeanP2VnrkPa = cont_press[6]
+    RmsP2VnrkPa = cont_press[7]
+
      
     '''
     'Расчет сил для пассажирского вагона 
@@ -1307,12 +1323,16 @@ def vagon_1 (input_val, Show_or_tell = "return"):
     for el in range(0,len(outarray)):
         outarray[el]=abs(round(outarray[el], 1))
 
+    
+    
     #Эта ветка выводит в память список списков который состоит из значений для далььнейших расчетов (Сред.знач верт. силы, СКО вертикал силы, Сред.знач. боковой силы, ско боковой силы)
     #вывод идет как в целом по подвижному составу, так и отдельно по нитям
     #данный режим может быть использован для формирования массивов силовых факторов по вагонопотоку
         
+    
+    
     if Show_or_tell == 'return':
-        return [Mean_F_vertR, Mean_F_vertL, Mean_Q, sigma_F_vertR, sigma_F_vertL, sigma_Q, Mean_F_sideR, Mean_F_sideL, Mean_Y, sigma_F_sideR, sigma_F_sideL, sigma_Y, Mean_Hp, sigma_Hp ]
+        return [Mean_F_vertR, Mean_F_vertL, Mean_Q, sigma_F_vertR, sigma_F_vertL, sigma_Q, Mean_F_sideR, Mean_F_sideL, Mean_Y, sigma_F_sideR, sigma_F_sideL, sigma_Y, Mean_Hp, sigma_Hp, MeanP1NarkPa, RmsP1NarkPa, MeanP1VnrkPa, RmsP1VnrkPa, MeanP2NarkPa, RmsP2NarkPa, MeanP2VnrkPa, RmsP2VnrkPa]
 
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
         
@@ -1363,7 +1383,20 @@ def vagon_3 (input_val, Show_or_return = "return"):
     Sh_Kol = input_val[6] 
     mu_fr = input_val[7] 
 
-
+    #вычисление контактных напряжений
+    from contact_pressure import contact_tension
+    input_val1 = [V,axle_load, mu_fr, Radius, h, Sh_Kol]
+    
+    cont_press = contact_tension(input_val1)
+    
+    MeanP1NarkPa = cont_press[0]
+    RmsP1NarkPa = cont_press[1]
+    MeanP1VnrkPa  = cont_press[2]
+    RmsP1VnrkPa = cont_press[3]
+    MeanP2NarkPa = cont_press[4]
+    RmsP2NarkPa = cont_press[5]
+    MeanP2VnrkPa = cont_press[6]
+    RmsP2VnrkPa = cont_press[7]
     '''
     'Пассажирский локомотив
     'VSP_type это VSP_type - тип всп (1 - б.п., 2 - з.п.)
@@ -2663,7 +2696,8 @@ def vagon_3 (input_val, Show_or_return = "return"):
         
     if Show_or_return == 'return':
         return [Mean_F_vertical_R, Mean_F_vertical_L, Mean_Q, Rms_F_vertical_R, Rms_F_vertical_L, Rms_Q, Mean_F_side_R,\
-                Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y, Mean_Hp, sigma_Hp]
+                Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y, Mean_Hp, sigma_Hp,\
+                MeanP1NarkPa, RmsP1NarkPa, MeanP1VnrkPa, RmsP1VnrkPa, MeanP2NarkPa, RmsP2NarkPa, MeanP2VnrkPa, RmsP2VnrkPa]
                 
 
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
@@ -2808,7 +2842,24 @@ def vagon_2 (input_val, Show_or_return = "return"):
     V = input_val[4]
     axle_load = input_val[5]
     Sh_Kol = input_val[6] 
-    mu_fr = input_val[7] 
+    mu_fr = input_val[7]
+
+    #вычисление контактных напряжений
+    
+    from contact_pressure import contact_tension
+    
+    input_val1 = [V,axle_load, mu_fr, Radius, h, Sh_Kol]
+
+    cont_press = contact_tension(input_val1)
+    
+    MeanP1NarkPa = cont_press[0]
+    RmsP1NarkPa = cont_press[1]
+    MeanP1VnrkPa  = cont_press[2]
+    RmsP1VnrkPa = cont_press[3]
+    MeanP2NarkPa = cont_press[4]
+    RmsP2NarkPa = cont_press[5]
+    MeanP2VnrkPa = cont_press[6]
+    RmsP2VnrkPa = cont_press[7]
 
     import math
     VSP = VSP_type
@@ -4559,7 +4610,8 @@ def vagon_2 (input_val, Show_or_return = "return"):
         
     if Show_or_return == 'return':
         return [Mean_F_vertR, Mean_F_vertL, Mean_F_vert, sigma_F_vertR, sigma_F_vertL, sigma_F_vert, Mean_F_sideR,\
-                Mean_F_sideL, Mean_F_side, sigma_F_sideR, sigma_F_sideL, sigma_F_side, Mean_H, sigma_H]
+                Mean_F_sideL, Mean_F_side, sigma_F_sideR, sigma_F_sideL, sigma_F_side, Mean_H, sigma_H,\
+                MeanP1NarkPa, RmsP1NarkPa, MeanP1VnrkPa, RmsP1VnrkPa, MeanP2NarkPa, RmsP2NarkPa, MeanP2VnrkPa, RmsP2VnrkPa]
         
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
     
@@ -4618,7 +4670,24 @@ def vagon_4 (input_val, Show_or_return = "return"):
     V = input_val[4]
     axle_load = input_val[5]
     Sh_Kol = input_val[6] 
-    mu_fr = input_val[7] 
+    mu_fr = input_val[7]
+
+
+    #вычисление контактных напряжений
+
+    from contact_pressure import contact_tension
+    input_val1 = [V,axle_load, mu_fr, Radius, h, Sh_Kol]
+
+    cont_press = contact_tension(input_val1)
+    
+    MeanP1NarkPa = cont_press[0]
+    RmsP1NarkPa = cont_press[1]
+    MeanP1VnrkPa  = cont_press[2]
+    RmsP1VnrkPa = cont_press[3]
+    MeanP2NarkPa = cont_press[4]
+    RmsP2NarkPa = cont_press[5]
+    MeanP2VnrkPa = cont_press[6]
+    RmsP2VnrkPa = cont_press[7]
 
     '''
     'Грузовой локомотив
@@ -5912,7 +5981,8 @@ def vagon_4 (input_val, Show_or_return = "return"):
         
     if Show_or_return == 'return':
         return [Mean_F_vertical_R, Mean_F_vertical_L, Mean_Q, Rms_F_vertical_R, Rms_F_vertical_L, Rms_Q,\
-                Mean_F_side_R, Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y, Mean_Hp, sigma_Hp]
+                Mean_F_side_R, Mean_F_side_L, Mean_Y, Rms_F_side_R, Rms_F_side_L, Rms_Y, Mean_Hp, sigma_Hp,\
+                MeanP1NarkPa, RmsP1NarkPa, MeanP1VnrkPa, RmsP1VnrkPa, MeanP2NarkPa, RmsP2NarkPa, MeanP2VnrkPa, RmsP2VnrkPa]
         
     #эта ветка выводит на экран результаты расчетов, но в память их не загружает
     
