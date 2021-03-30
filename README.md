@@ -1,2 +1,0 @@
-# Neiroexpert
-Создание MVP НЭ
