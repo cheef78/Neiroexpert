@@ -1750,80 +1750,79 @@ td:first-child {
 }
 
 
-ul {
-    /* Убираю маркеры у списка*/
-    list-style: none;
-    /* Делаю элементы блочными. */
-    display: block;
-    /* Убираю отступы. */
-    margin:0px;
-    /* Убираю еще отступы! */
-    padding:0px;
-}
 
-ul:after {
-    /* Делаю элементы блочными. */
-    display: block;
-    /* Убираю выравнивание. */
-    float: none;
-    content: ' ';
-    clear: both;
+
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic);
+*{box-sizing: border-box;}
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
 }
-ul.mmenuu > li {
-    /* Задаю выравнивание и позиционирование. */
-    float: left;
-    /* Считаем координаты относительно исходного места*/
-    position: relative;
+nav {background: #e92828;}
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-ul.mmenuu > li > a {
-    /* Делаю элементы блочными: */
-    display: block;
-    /* Задаю белый цвет. */
-    color: #fff;
-    /* Задаю отступ 10px. */
-    padding: 10px;
-    /* Убираю форматирование*/
-    text-decoration: none;
-    /* Задаю цвет. */
-    background-color: #da570f;
+nav ul:after {
+  content: "";
+  display: table;
+  clear: both;
 }
-ul.mmenuu > li > a:hover {
-    /* Задаю цвет при наведении. */
-    background-color: #eb9316;
+nav a {
+  text-decoration: none;
+  display: block;
+  transition: .3s linear;
 }
-ul.ssubmenuu {
-    position: absolute;
-    width: 240px;
-    top: 37px;
-    left:0px;
-    /* Делаю субменю скрытыми. */
-    display: none;
-    /* Цвет — белый. */
-    background-color: white;
+.topmenu > li {
+  float: left;
+  position: relative;
+  border-left: 1px solid black;
 }
-ul.ssubmenuu > li {
-    /* Блочное расположение элементов*/
-    display: block;
+.topmenu > li:first-child {border-left: 0;}
+.topmenu > li > a {  
+  padding: 10px 10px;
+  font-size: 13px;
+  text-transform: capitalize;
+  color: #FEFDFD;
+  letter-spacing: 2px;
 }
-ul.ssubmenuu > li > a {
-    /* Делаю элементы блочными. */
-    display: block;
-    /* Убираю форматирование*/
-    text-decoration: none;
-    /* Задаю отступ. */
-    padding: 10px;
-    /* Задаю цвет. */
-    color: #ffffff;
-    /* Еще цвет. */
-    background-color: #da570f;
+.topmenu > li > a.active, 
+.submenu a:hover {color: #ddbe86;}
+.topmenu .fa, 
+.submenu .fa {
+  margin-left: 5px;
+  color: inherit;
 }
-ul.ssubmenuu > li > a:hover {
-    /* Цвет бэкграунда при наведении. */
-    background-color: #eb9316;
-    /* Задаю подчеркивание*/
-    text-decoration: underline;
+.submenu {
+  position: absolute;
+  z-index: 5;
+  min-width: 200px;
+  background: white;
+  border-top: 1px solid #CBCBCC;
+  border-left: 1px solid #CBCBCC;
+  border-right: 1px solid #CBCBCC;
+  visibility: hidden;
+  opacity: 0; 
+  transform-origin: 0% 0%;
+  transform: rotateX(-90deg);
+  transition: .3s linear;  
 }
-ul.mmenuu > li:hover > ul.ssubmenuu {
-    /* Делаю элементы блочными. */
-    display: block;
+.submenu li {position: relative;}
+.submenu li a {
+  color: #282828;
+  padding: 10px 20px;
+  font-size: 13px;
+  border-bottom: 1px solid #CBCBCC;
+}
+.submenu .submenu {
+  position: absolute;
+  left: 100%;
+  top: -1px;
+  transition: .3s linear;
+}
+nav li:hover > .submenu {
+  transform: rotateX(0deg);
+  visibility: visible;
+  opacity: 1;
 }

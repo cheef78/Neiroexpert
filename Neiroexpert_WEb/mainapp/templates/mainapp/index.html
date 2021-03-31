@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container" style = "width: 1000px;">
-		<div class="slider" style = "margin:15px; height: 200px; ">
+		<div class="slider" style = "margin:15px; height: 100px; ">
 			<a href="https://www.vniizht.ru/" target="_blank" class="logo" style = "width:175px; height: 100px; background-image: url(/static/img/logo_vniizht.webp); background-repeat: no-repeat; margin:5px; padding:10px">
 			</a>
         	<span class="text-slider green" style = "width:800px; margin:0; margin-left:35px; margin-top:05px; ">
@@ -25,53 +25,75 @@
 				Отдел комплексных инновационных проектов (ОКИП)
 			</span>
 		</div>
-		<ul class="mmenuu" style = "margin-left:15px; margin-top:-90px;" >
-			<li><a href="#" > Проект</a>
-				<ul class="ssubmenuu">
-					<li><a href="#">Создать новый проект</a></li>
-			        <li><a href="#">Загрузить существующий проект</a></li>
-			    </ul>
-			</li>
-			<li><a href="#">Путевая инфраструктура</a>
-				<ul class="ssubmenuu">
-					<li><a href="#">Характристики плана/профиля пути</a></li>
-			        <li><a href="#">Характеристики верхнего строения пути</a></li>
-					<li><a href="#">Загрузка характеристик из баз данных (ЕК АСУ И итп)</a></li>
-			    </ul>
-			</li>
-			<li><a href="#">Эксплуатационные условия</a>
-			    <ul class="ssubmenuu">
-					<li><a href="#">Данные подвижного состава</a></li>
-			        <li><a href="#">Характеристики вагонопотока</a></li>
-					<li><a href="#">Характеристики поездопотока</a></li>
-					<li><a href="#">Климатические характеристики</a></li>
-			    </ul>
-			</li>
-			<li><a href="#">Планирование ТОиР</a>
-				<ul class="ssubmenuu">
-					<li><a href="#">Нагруженность пути</a>
-						<ul class="ssubmenuu">
-							<li><a href="#">Расчет в программном комплексе ВЭИП</a></li>
-							<li><a href="#">Расчет по нейросетевым моделям</a></li>
-							<li><a href="#">Загрузка данных натурных измерений</a></li>
-						</ul>
-					</li>
-			        <li><a href="#">Технико-экономические критерии</a></li>
-					<li><a href="#">Планирование схемы ТОиР</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Помощь</a>
-				<ul class="ssubmenuu">
-					<li><a href="#">Об программе</a></li>
-			        <li><a href="#">Обратиться к разработчику</a></li>
-					<li><a href="#">Часто задаваемые вопросы</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Вход в систему</a></li>
-		</ul>
+
+		<nav>
+			<ul class="topmenu"  >
+				<li><a href="#" > Проект <span class="fa fa-angle-down"></span></a>
+					<ul class="submenu">
+						<li><a href="#">Создать новый проект</a></li>
+						<li><a href="#">Загрузить существующий проект</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Путевая инфраструктура<span class="fa fa-angle-down"></span></a>
+					<ul class="submenu">
+						<li><a href="#">Характристики плана/профиля пути</a></li>
+						<li><a href="#">Характеристики верхнего строения пути</a></li>
+						<li><a href="#">Загрузка характеристик из баз данных (ЕК АСУ И итп)</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Эксплуатационные условия<span class="fa fa-angle-down"></span></a>
+					<ul class="submenu">
+						<li><a href="#">Данные подвижного состава</a></li>
+						<li><a href="#">Характеристики вагонопотока</a></li>
+						<li><a href="#">Характеристики поездопотока</a></li>
+						<li><a href="#">Климатические характеристики</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Планирование ТОиР<span class="fa fa-angle-down"></span></a>
+					<ul class="submenu">
+						<li><a href="#">Нагруженность пути<span class="fa fa-angle-down"></span></a>
+							<ul class="submenu">
+								<li><a href="https://veip.vniizht.ru/" target="_blank">Расчет в программном комплексе ВЭИП</a></li>
+								<li><a href="#">Расчет по нейросетевым моделям</a></li>
+								<li><a href="#">Загрузка данных натурных измерений</a></li>
+							</ul>
+						</li>
+						<li><a href="#">Технико-экономические критерии</a></li>
+						<li><a href="#">Планирование схемы ТОиР</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Помощь<span class="fa fa-angle-down"></span></a>
+					<ul class="submenu">
+						<li><a href="#">Об программе</a></li>
+						<li><a href="#">Обратиться к разработчику<span class="fa fa-angle-down"></span></a>
+							<ul class="submenu">
+								<li><a href="mailto:suslov.oleg@vniizht.ru">
+										<span style = "width:150px; margin:0; padding:0;">
+											Научный информационно-аналитический центр (НИАЦ)
+											<br> 
+											196128, г. Санкт-Петербург,	ул. Благодатная, д. 10, стр. 1,
+											<br>
+											8 этаж, оф. 825, Тел.: +7(499) 260-41-58 
+											<br>
+											E-mail:sekretar_niac@vniizht.ru
+										</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#">Часто задаваемые вопросы</a></li>
+					
+						
+						</li>
+						<li><a href="#">Часто задаваемые вопросы</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Войти</a></li>
+			</ul>
+		</nav>	
 		<img src ="/static/img/toir5.jpg" alt="альтернативный текст" style = "margin-top:25px;  margin-left:120px; ">	
 		<br>
-		<div class="footer">
+		{% comment %} <div class="footer">
 			<div class="text-footer">
 				<h3> контакты </h3>
 				<h4>
@@ -101,7 +123,7 @@
 					
 				
 				
-		</div>	
+		</div>	 {% endcomment %}
 	</div>
 </body>
 </html>
