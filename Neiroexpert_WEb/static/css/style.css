@@ -1223,7 +1223,7 @@ html, body {
     color: #6c6c6c;
 }
 .text-footer {
-	margin-top: 30px;
+	margin-top: 15px;
 	width: 400px;
 	text-align: center;
 	margin-right: 15px;
@@ -1811,8 +1811,8 @@ nav a {
 .submenu li {position: relative;}
 .submenu li a {
   color: #282828;
-  padding: 10px 20px;
-  font-size: 13px;
+  padding: 6px 6px;
+  font-size: 12px;
   border-bottom: 1px solid #CBCBCC;
 }
 .submenu .submenu {

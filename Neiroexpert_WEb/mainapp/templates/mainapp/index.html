@@ -51,14 +51,17 @@
 				</li>
 				<li><a href="#">Планирование ТОиР<span class="fa fa-angle-down"></span></a>
 					<ul class="submenu">
-						<li><a href="#">Нагруженность пути<span class="fa fa-angle-down"></span></a>
+						<li><a href="#">Расчеты нагруженности пути<span class="fa fa-angle-right"></span></a>
 							<ul class="submenu">
-								<li><a href="https://veip.vniizht.ru/" target="_blank">Расчет в программном комплексе ВЭИП</a></li>
-								<li><a href="#">Расчет по нейросетевым моделям</a></li>
-								<li><a href="#">Загрузка данных натурных измерений</a></li>
+								<li><a href="https://veip.vniizht.ru/" target="_blank">Расчет сил и напряжений в программном комплексе ВЭИП</a></li>
+								<li><a href="#">Расчет сил и напряжений по нейросетевым моделям</a></li>
+								<li><a href="#">Расчет сил и напряжений по методике 2706р</a></li>
+								<li><a href="#">Расчет бесстыкового пути на устойчивость</a></li>
+								<li><a href="#">Расчеты земляного полотна</a></li>
+								<li><a href="#">Загрузка данных натурных измерений сил и напряжений</a></li>
 							</ul>
 						</li>
-						<li><a href="#">Технико-экономические критерии<span class="fa fa-angle-down"></span></a>
+						<li><a href="#">Технико-экономические критерии<span class="fa fa-angle-right"></span></a>
 							<ul class="submenu">
 								<li><a href="#">Стоимость путевых работ и ремонтов пути </a></li>
 								<li><a href="#">Критерии назначения ремонтов пути</a></li>
@@ -68,7 +71,7 @@
 							</ul>
 						</li>
 						<li><a href="#">Прогнозные расчеты деградационных процессов</a></li>
-						<li><a href="#">Формирование отчетов<span class="fa fa-angle-down"></span></a>
+						<li><a href="#">Формирование отчетов<span class="fa fa-angle-right"></span></a>
 							<ul class="submenu">
 								<li><a href="#">Схема периодичности проведения ремонтов пути </a></li>
 								<li><a href="#">Годовые планы организации текущего содержания</a></li>
@@ -81,8 +84,8 @@
 				</li>
 				<li><a href="#">Помощь<span class="fa fa-angle-down"></span></a>
 					<ul class="submenu">
-						<li><a href="#">Об программе</a></li>
-						<li><a href="#">Обратиться к разработчику<span class="fa fa-angle-down"></span></a>
+						<li><a href="#">О программе</a></li>
+						<li><a href="#">Обратиться к разработчику<span class="fa fa-angle-right"></span></a>
 							<ul class="submenu">
 								<li><a href="mailto:suslov.oleg@vniizht.ru">
 										<span style = "width:150px; margin:0; padding:0;">
@@ -107,37 +110,45 @@
 		</nav>	
 		<img src ="/static/img/toir5.jpg" alt="альтернативный текст" style = "margin-top:25px;  margin-left:120px; ">	
 		<br>
-		{% comment %} <div class="footer">
+		<div class="footer">
 			<div class="text-footer">
 				<h3> контакты </h3>
 				<h4>
-						Научный информационно-аналитический центр (НИАЦ) 196128, г. Санкт-Петербург,
-						ул. Благодатная, д. 10, стр. 1, 8 этаж, оф. 825, Тел.: +7(499) 260-41-58 
-						E-mail: sekretar_niac@vniizht.ru
+						Научный информационно-аналитический центр (НИАЦ) 
+						196128, г. Санкт-Петербург,	ул. Благодатная, д. 10, стр. 1,
+						8 этаж, оф. 825, Тел.: +7(499) 260-41-58 <br>
+						<a href="mailto:sekretar_niac@vniizht.ru">
+							<span> E-mail: sekretar_niac@vniizht.ru</span>
+						</a>
+						
 				</h4>
 			</div>
 			<div class="text-footer">
 				<h3>полезная информация</h3>
 				<h4>
-						Центральный офис АО «ВНИИЖТ» ул. 3-я Мытищинская, д. 10, 
-						Москва 129626 Справочные телефоны: +7 (499) 260-41-11
-						+7 (495) 602-83-33 Факс:+7 (495) 602-84-84 
-						E-mail: info@vniizht.ru
+						Центральный офис АО «ВНИИЖТ»
+						129626, г.Москва, ул. 3-я Мытищинская, д. 10, 
+						Справочные телефоны: +7 (499) 260-41-11 +7 (495) 602-83-33
+						Факс:+7 (495) 602-84-84 
+						<br>
+						<a href="mailto:info@vniizht.ru">
+							<span> E-mail: info@vniizht.ru</span>
+						</a>
 				</h4>
 			</div>
 					
-			<div class="text-footer" >
+			{% comment %} <div class="text-footer" >
 				<div class="social" style = " width:150 px; margin-top:45px;  margin:15px; " >
 					<a href="#" class="social1"></a>
 					<a href="#" class="social2"></a>
 					<a href="#" class="social3"></a>
 					<a href="#" class="social4"></a>
 				</div>
-			</div>
+			</div> {% endcomment %}
 					
 				
 				
-		</div>	 {% endcomment %}
+		</div>	
 	</div>
 </body>
 </html>
