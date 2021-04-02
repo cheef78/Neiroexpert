@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="static/js/basket_scripts.js"></script>
 </head>
 <body>
 	<div class="container" style = "width: 1000px;">
@@ -54,7 +56,7 @@
 						<li><a href="#">Расчеты пути<span class="fa fa-angle-right"></span></a>
 							<ul class="submenu">
 								<li><a href="https://veip.vniizht.ru/" target="_blank">Расчет сил и напряжений в программном комплексе ВЭИП</a></li>
-								<li><a href="/damage_neiro/">Расчет сил и напряжений по нейросетевым моделям</a></li>
+                                <form method="post"><button onclick="location.href='/damage_neiro/';" id="calculation" class="btn bt_command" type="button">Расчет сил и напряжений по нейросетевым моделям</button></form>
 								<li><a href="#">Расчет сил и напряжений по методике 2706р</a></li>
 								<li><a href="#">Расчет бесстыкового пути</a></li>
 								<li><a href="#">Расчеты земляного полотна</a></li>
