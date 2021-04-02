@@ -21,5 +21,6 @@ import mainapp.views as mainapp
 
 urlpatterns = [
     path( '' , mainapp.main),
+    path( 'damage_neiro/' , mainapp.damage_calculate),
     path('admin/', admin.site.urls),
 ]
