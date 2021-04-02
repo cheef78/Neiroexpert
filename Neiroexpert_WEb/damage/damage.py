@@ -1,4 +1,8 @@
 def damage (project_path, project_number):    
+    project_path = project_path
+    project_number = project_number
+    files_path = project_path + str('\\') + str(project_number)
+    
     # gruzim biblioteki
     # obshie
     from array import array
@@ -27,12 +31,13 @@ def damage (project_path, project_number):
     from tensions import f_ballast_opzp
 
     # schitivanie isxodnix dannix
-    line = pd.read_excel('dannye.xlsx', sheet_name='line')
-    trains = pd.read_excel('dannye.xlsx', sheet_name='trains')
-    pod_sos = pd.read_excel('dannye.xlsx', sheet_name='pod_sos')
-    vsp_konstr = pd.read_excel('dannye.xlsx', sheet_name='vsp_constr')
-    damage_koef = pd.read_excel('dannye.xlsx', sheet_name='damage_koeff')
-    criteria = pd.read_excel('dannye.xlsx', sheet_name='criteria')
+ 
+    line = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='line')
+    trains = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='trains')
+    pod_sos = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='pod_sos')
+    vsp_konstr = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='vsp_constr')
+    damage_koef = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='damage_koeff')
+    criteria = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='criteria')
 
     # бЛОК вычисления сил для каждого элемента плана с полным учетом вагонопотока на линии
     force_line = np.zeros((len(line.index),22))
@@ -176,7 +181,7 @@ def damage (project_path, project_number):
 
     # Формирование файла с силами для каждого элемента
     force_line = line.join(forces_itogo)
-    force_line.to_csv('force_line.csv')
+    force_line.to_csv(files_path + '/force_line.csv')
 
     # бЛОК вычисления напряжений в рельсах для каждого элемента линии с полным учетом поездопотока и уклона на линии
     #вычисления ведутся для осредненных значений
@@ -267,7 +272,7 @@ def damage (project_path, project_number):
                                 'Mean_osev_MPa', 'RMS_osev_MPa','d_rail_MPa^Xrail']
 
     rail_streses = line.join(rail_streses_itogo)
-    rail_streses.to_csv('rail_streses_line.csv') 
+    rail_streses.to_csv(files_path + '/rail_streses_line.csv') 
 
     tie_forces_itogo = pd.DataFrame(tie_forces)
     tie_forces_itogo.columns = ['mean_F_shpal_vert_kN','sigma_F_shpal_vert_kN',\
@@ -276,14 +281,14 @@ def damage (project_path, project_number):
                                 'd_fast_kN^Xfast', 'd_tie_kN^Xtie', 'd_shkol_kN^Xshkol', 'd_plan_kN^Xplan']
 
     tie_forces = line.join(tie_forces_itogo)
-    tie_forces.to_csv('tie_forces_line.csv')
+    tie_forces.to_csv(files_path + '/tie_forces_line.csv')
 
     balast_opzp_streses_itogo = pd.DataFrame(balast_opzp_streses)
     balast_opzp_streses_itogo.columns = ['mean_F_ballast_kPa', 'sigma_F_ballast_kPa', 'mean_F_OPZP_kPa', 'sigma_F_OPZP_kPa',\
                                         'd_prof_kPa^Xprof', 'd_ball_kPa^Xball', 'd_opzp_kPa^Xopzp']
 
     balast_opzp_streses = line.join(balast_opzp_streses_itogo)
-    balast_opzp_streses.to_csv('balast_opzp_streses_line.csv')
+    balast_opzp_streses.to_csv(files_path + '/balast_opzp_streses_line.csv')
 
     damage_itogo = pd.DataFrame()
     damage_itogo['d_rail_MPa^Xrail'] = rail_streses['d_rail_MPa^Xrail']
@@ -295,5 +300,5 @@ def damage (project_path, project_number):
     damage_itogo['d_ball_kPa^Xball'] = balast_opzp_streses['d_ball_kPa^Xball']
     damage_itogo['d_opzp_kPa^Xopzp'] = balast_opzp_streses['d_opzp_kPa^Xopzp']
     damage = line.join(damage_itogo)
-    damage.to_csv('damage_line.csv')
+    damage.to_csv(files_path + '/damage_line.csv')
     return ("Расчет повреждаемости выполнен успешно! Выходные данные сформированы!")
