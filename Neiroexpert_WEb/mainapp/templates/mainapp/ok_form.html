@@ -25,94 +25,20 @@
 				Отдел комплексных инновационных проектов (ОКИП)
 			</span>
 		</div>
-
-		<nav>
-			<ul class="topmenu"  >
-				<li><a href="#" > Проект <span class="fa fa-angle-down"></span></a>
-					<ul class="submenu">
-						<li><a href="#">Создать новый проект</a></li>
-						<li><a href="#">Загрузить существующий проект</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Путевая инфраструктура<span class="fa fa-angle-down"></span></a>
-					<ul class="submenu">
-						<li><a href="#">Характристики плана/профиля пути</a></li>
-						<li><a href="#">Характеристики верхнего строения пути</a></li>
-						<li><a href="#">Загрузка характеристик из баз данных (ЕК АСУ И итп)</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Эксплуатационные условия<span class="fa fa-angle-down"></span></a>
-					<ul class="submenu">
-						<li><a href="#">Данные подвижного состава</a></li>
-						<li><a href="#">Характеристики вагонопотока</a></li>
-						<li><a href="#">Характеристики поездопотока</a></li>
-						<li><a href="#">Климатические характеристики</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Планирование ТОиР<span class="fa fa-angle-down"></span></a>
-					<ul class="submenu">
-						<li><a href="#">Расчеты пути<span class="fa fa-angle-right"></span></a>
-							<ul class="submenu">
-								<li><a href="https://veip.vniizht.ru/" target="_blank">Расчет сил и напряжений в программном комплексе ВЭИП</a></li>
-								<li><a href="#">Расчет сил и напряжений по нейросетевым моделям</a></li>
-								<li><a href="#">Расчет сил и напряжений по методике 2706р</a></li>
-								<li><a href="#">Расчет бесстыкового пути</a></li>
-								<li><a href="#">Расчеты земляного полотна</a></li>
-								<li><a href="#">Загрузка данных натурных измерений сил и напряжений</a></li>
-							</ul>
-						</li>
-						<li><a href="#">Технико-экономические критерии<span class="fa fa-angle-right"></span></a>
-							<ul class="submenu">
-								<li><a href="#">Стоимость путевых работ и ремонтов пути </a></li>
-								<li><a href="#">Критерии назначения ремонтов пути</a></li>
-								<li><a href="#">Критерии безопасности движения поездов</a></li>
-								<li><a href="#">Критерии надежности (УРРАН)</a></li>
-								<li><a href="#">Критерии интенсивности деградации пути</a></li>
-							</ul>
-						</li>
-						<li><a href="#">Прогнозные расчеты деградационных процессов</a></li>
-						<li><a href="#">Формирование отчетов<span class="fa fa-angle-right"></span></a>
-							<ul class="submenu">
-								<li><a href="#">Схема периодичности проведения ремонтов пути </a></li>
-								<li><a href="#">Годовые планы организации текущего содержания</a></li>
-								<li><a href="#">Бюджетирование затрат ТОиР</a></li>
-								<li><a href="#">Анализ нагруженности пути </a></li>
-								<li><a href="#">Анализ интенсивности деградации пути</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li><a href="#">Помощь<span class="fa fa-angle-down"></span></a>
-					<ul class="submenu">
-						<li><a href="#">О программе</a></li>
-						<li><a href="#">Обратиться к разработчику<span class="fa fa-angle-right"></span></a>
-							<ul class="submenu">
-								<li><a href="mailto:suslov.oleg@vniizht.ru">
-										<span style = "width:150px; margin:0; padding:0;">
-											Научный информационно-аналитический центр (НИАЦ)
-											<br> 
-											196128, г. Санкт-Петербург,	ул. Благодатная, д. 10, стр. 1,
-											<br>
-											8 этаж, оф. 825, Тел.: +7(499) 260-41-58 
-											<br>
-											E-mail:sekretar_niac@vniizht.ru
-										</span>
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li><a href="#">Часто задаваемые вопросы</a></li>
-						
-					</ul>
-				</li>
-				<li><a href="#">Войти</a></li>
-			</ul>
-		</nav>	
-		<p>
+        
+		{% include 'mainapp/includes/inc_main_menu.html' %}
+		
+		<h3 style = "text-align:center;">
 		{{fuction_result}}
-		</p>	
-		 <form action="/">
-		 <button>Вернуться на главную страницу</button> </form>
+		</h3>
+		<br>
+		<img src ="/static/img/force_tension.png" alt="альтернативный текст" style = "margin-top:25px;  margin-left:170px; ">
+		<br>
+		<br>
+		<h4 style = "text-align:center;">
+		<form action="/">
+		<button>Вернуться на главную страницу</button> </form>
+		</h4>
 		<br>
 		<div class="footer">
 			<div class="text-footer">

@@ -301,6 +301,5 @@ def damage (project_path, project_number):
     damage_itogo['d_opzp_kPa^Xopzp'] = balast_opzp_streses['d_opzp_kPa^Xopzp']
     damage = line.join(damage_itogo)
     damage.to_csv(files_path + '/damage_line.csv')
-    response = "Расчет сил и напряжений по нейросетевой модели выполнен успешно! Выходные данные сформированы!"
-    return (response)
+    return ("Расчет сил и напряжений по нейросетевой модели выполнен успешно! Выходные данные сформированы!")
     
