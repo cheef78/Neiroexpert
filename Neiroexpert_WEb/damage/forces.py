@@ -11,7 +11,7 @@ def vagon_1 (input_val, Show_or_tell = "return"):
     mu_fr = input_val[7]
 
     #вычисление контактных напряжений
-    from contact_pressure import contact_tension 
+    from damage.contact_pressure import contact_tension 
     input_val1 = [V,axle_load, mu_fr, Radius, h, Sh_Kol]
     
     cont_press = contact_tension(input_val1)
@@ -1384,7 +1384,7 @@ def vagon_3 (input_val, Show_or_return = "return"):
     mu_fr = input_val[7] 
 
     #вычисление контактных напряжений
-    from contact_pressure import contact_tension
+    from damage.contact_pressure import contact_tension
     input_val1 = [V,axle_load, mu_fr, Radius, h, Sh_Kol]
     
     cont_press = contact_tension(input_val1)
@@ -2846,7 +2846,7 @@ def vagon_2 (input_val, Show_or_return = "return"):
 
     #вычисление контактных напряжений
     
-    from contact_pressure import contact_tension
+    from damage.contact_pressure import contact_tension
     
     input_val1 = [V,axle_load, mu_fr, Radius, h, Sh_Kol]
 
@@ -4675,7 +4675,7 @@ def vagon_4 (input_val, Show_or_return = "return"):
 
     #вычисление контактных напряжений
 
-    from contact_pressure import contact_tension
+    from damage.contact_pressure import contact_tension
     input_val1 = [V,axle_load, mu_fr, Radius, h, Sh_Kol]
 
     cont_press = contact_tension(input_val1)
