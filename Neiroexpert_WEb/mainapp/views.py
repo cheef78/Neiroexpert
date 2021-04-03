@@ -4,6 +4,7 @@ from damage.damage import ForceNeiroCalc
 
 
 
+
 # Create your views here.
 
 def main (request):
@@ -11,7 +12,7 @@ def main (request):
 
 def damage_neiro_calculate (request):
     project_path = r'C:/Users/suslo/Google Диск/2,5 млрд/Neiroexpert/Neiroexpert_WEb/projekts'
-    project_number = 2
+    project_number = 3
     damage = ForceNeiroCalc(project_path, project_number)
     result = damage.damage()
     pic_names = ('Mean_F_vertR_kN', 'Mean_F_vertL_kN', 'Mean_F_vert_kN', 'sigma_F_vertR_kN','sigma_F_vertL_kN','sigma_F_vert_kN','Mean_F_sideR_kN', 'Mean_F_sideL_kN', 'Mean_F_side_kN','sigma_F_sideR_kN','sigma_F_sideL_kN', 'sigma_F_side_kN', 'Mean_Hp_kN', 'sigma_Hp_kN','MeanP1NarkPa', 'RmsP1NarkPa', 'MeanP1VnrkPa', 'RmsP1VnrkPa','MeanP2NarkPa', 'RmsP2NarkPa', 'MeanP2VnrkPa', 'RmsP2VnrkPa', 'Mean_nar_krom_MPa', 'RMS_nar_krom_MPa', 'Mean_vntr_krom_MPa',  'RMS_vntr_krom_MPa','Mean_osev_MPa', 'RMS_osev_MPa', 'mean_F_shpal_vert_kN','sigma_F_shpal_vert_kN','mean_F_shpal_side_kN','sigma_F_shpal_side_kN','mean_F_ballast_kPa', 'sigma_F_ballast_kPa', 'mean_F_OPZP_kPa', 'sigma_F_OPZP_kPa', 'd_rail_MPa^Xrail', 'd_fast_kN^Xfast', 'd_tie_kN^Xtie', 'd_shkol_kN^Xshkol', 'd_prof_kPa^Xprof', 'd_plan_kN^Xplan', 'd_ball_kPa^Xball', 'd_opzp_kPa^Xopzp')

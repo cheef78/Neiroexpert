@@ -5,6 +5,10 @@ class ForceNeiroCalc():
         
     def damage (self):    
         files_path = self.project_path + str('\\') + str(self.project_number)
+        import os
+        if not os.path.exists(files_path):
+            os.mkdir(files_path)
+            
         # print(files_path)
         # gruzim biblioteki
         # obshie
@@ -197,8 +201,11 @@ class ForceNeiroCalc():
         force_line.to_csv(files_path + '/force_line.csv', sep=";")
         
         # Формирование графического отображения данных силового расчета в точке взаимодействия
-        report_path = self.project_path + str('\\') + str(self.project_number)
-        pdf = matplotlib.backends.backend_pdf.PdfPages(report_path + '\\all_result.pdf')
+        
+        pdf = matplotlib.backends.backend_pdf.PdfPages(files_path + '\\all_result.pdf')
+        pic_path = files_path + str('\\') + "graf" +  str('\\')
+        if not os.path.exists(pic_path):
+            os.mkdir(pic_path)
         # print(len(force_line.index))
         values = ['Mean_F_vertR_kN', 'Mean_F_vertL_kN', 'Mean_F_vert_kN', 'sigma_F_vertR_kN', 'sigma_F_vertL_kN',\
                                 'sigma_F_vert_kN','Mean_F_sideR_kN', 'Mean_F_sideL_kN', 'Mean_F_side_kN', 'sigma_F_sideR_kN',\
@@ -213,7 +220,7 @@ class ForceNeiroCalc():
             plt.xlabel('Номер участка в ведоомости')
             plt.xticks(rotation='vertical')
             plt.xticks(np.arange(0, len(force_line.index), 1))
-            fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+            fig.savefig(pic_path + value + ".png")
             pdf.savefig(fig)  
             
             # plt.show()
@@ -326,7 +333,7 @@ class ForceNeiroCalc():
             plt.xlabel('Номер участка в ведоомости')
             plt.xticks(rotation='vertical')
             plt.xticks(np.arange(0, len(rail_streses.index), 1))
-            fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+            fig.savefig(pic_path + value + ".png")
             pdf.savefig(fig)  
             
             # plt.show()
@@ -352,7 +359,7 @@ class ForceNeiroCalc():
             plt.xlabel('Номер участка в ведоомости')
             plt.xticks(rotation='vertical')
             plt.xticks(np.arange(0, len(tie_forces.index), 1))
-            fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+            fig.savefig(pic_path + value + ".png")
             pdf.savefig(fig)  
             
             # plt.show()
@@ -377,7 +384,7 @@ class ForceNeiroCalc():
             plt.xlabel('Номер участка в ведоомости')
             plt.xticks(rotation='vertical')
             plt.xticks(np.arange(0, len(balast_opzp_streses.index), 1))
-            fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+            fig.savefig(pic_path + value + ".png")
             pdf.savefig(fig)  
             
             # plt.show()
@@ -407,7 +414,7 @@ class ForceNeiroCalc():
             plt.xlabel('Номер участка в ведоомости')
             plt.xticks(rotation='vertical')
             plt.xticks(np.arange(0, len(damage.index), 1))
-            fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+            fig.savefig(pic_path + value + ".png")
             pdf.savefig(fig)  
             
             # plt.show()
