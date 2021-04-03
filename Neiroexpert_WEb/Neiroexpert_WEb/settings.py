@@ -127,3 +127,8 @@ os.path.join(BASE_DIR, "static" ),
 )
 
 ALLOWED_HOSTS = ['*']
+
+
+
+MEDIA_URL = '/projekts/'
+MEDIA_ROOT = os.path.join(BASE_DIR,"projekts")

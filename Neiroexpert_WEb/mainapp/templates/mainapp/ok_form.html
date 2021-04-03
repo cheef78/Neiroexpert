@@ -30,15 +30,23 @@
 		
 		<h3 style = "text-align:center;">
 		{{fuction_result}}
+		<br>
 		</h3>
 		<br>
-		<img src ="/static/img/force_tension.png" alt="альтернативный текст" style = "margin-top:25px;  margin-left:170px; ">
-		<br>
-		<br>
+        {% for desc in desc_names %}
 		<h4 style = "text-align:center;">
+		{{desc}}
+		</h4>
+		{% endfor %}
+		<br>
+		{% for pic in pic_names %}
+			<img src = "{{pic}}"  alt={{pic}} style = "margin-top:5px;  margin-left:10px; width:800px; height: 500px; ">
+		    <br>
+		{% endfor %}
+		<h5 style = "text-align:center;">
 		<form action="/">
 		<button>Вернуться на главную страницу</button> </form>
-		</h4>
+		</h5>
 		<br>
 		<div class="footer">
 			<div class="text-footer">

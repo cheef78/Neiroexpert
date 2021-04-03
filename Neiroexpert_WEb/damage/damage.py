@@ -2,7 +2,7 @@ def damage (project_path, project_number):
     project_path = project_path
     project_number = project_number
     files_path = project_path + str('\\') + str(project_number)
-    
+    # print(files_path)
     # gruzim biblioteki
     # obshie
     from array import array
@@ -20,6 +20,8 @@ def damage (project_path, project_number):
     warnings.simplefilter('ignore')
     import pathlib
     import os
+    import matplotlib.backends.backend_pdf
+    plt.rcParams['figure.figsize'] = [15, 10]
 
     # lichnie
     from forces import vagon_1
@@ -182,6 +184,33 @@ def damage (project_path, project_number):
     # Формирование файла с силами для каждого элемента
     force_line = line.join(forces_itogo)
     force_line.to_csv(files_path + '/force_line.csv', sep=";")
+    
+    # Формирование графического отображения данных силового расчета в точке взаимодействия
+    report_path = project_path + str('\\') + str(project_number)
+    pdf = matplotlib.backends.backend_pdf.PdfPages(report_path + '\\all_result.pdf')
+    # print(len(force_line.index))
+    values = ['Mean_F_vertR_kN', 'Mean_F_vertL_kN', 'Mean_F_vert_kN', 'sigma_F_vertR_kN', 'sigma_F_vertL_kN',\
+                            'sigma_F_vert_kN','Mean_F_sideR_kN', 'Mean_F_sideL_kN', 'Mean_F_side_kN', 'sigma_F_sideR_kN',\
+                            'sigma_F_sideL_kN', 'sigma_F_side_kN', 'Mean_Hp_kN', 'sigma_Hp_kN',\
+                            'MeanP1NarkPa', 'RmsP1NarkPa', 'MeanP1VnrkPa', 'RmsP1VnrkPa',\
+                            'MeanP2NarkPa', 'RmsP2NarkPa', 'MeanP2VnrkPa', 'RmsP2VnrkPa']
+    for value in values:
+        fig = plt.figure()
+        plt.bar(force_line.index, force_line[value])
+        plt.title('Распределение значений параметра_' + value + "_по длине линии")
+        plt.ylabel('Значение параметра_' + value)
+        plt.xlabel('Номер участка в ведоомости')
+        plt.xticks(rotation='vertical')
+        plt.xticks(np.arange(0, len(force_line.index), 1))
+        fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+        pdf.savefig(fig)  
+         
+        # plt.show()
+    # pdf.close()
+    
+
+
+
 
     # бЛОК вычисления напряжений в рельсах для каждого элемента линии с полным учетом поездопотока и уклона на линии
     #вычисления ведутся для осредненных значений
@@ -274,6 +303,24 @@ def damage (project_path, project_number):
     rail_streses = line.join(rail_streses_itogo)
     rail_streses.to_csv(files_path + '/rail_streses_line.csv', sep = ";") 
 
+    # files_path1 = project_path + str('\\') + str(project_number) + str('\\') + 'rail_streses'
+    # pdf = matplotlib.backends.backend_pdf.PdfPages(files_path1 + "\statistica_rail_streses_.pdf")
+    # # print(len(force_line.index))
+    values = ['Mean_nar_krom_MPa', 'RMS_nar_krom_MPa', 'Mean_vntr_krom_MPa', 'RMS_vntr_krom_MPa','Mean_osev_MPa', 'RMS_osev_MPa']
+    for value in values:
+        fig = plt.figure()
+        plt.bar(rail_streses.index, rail_streses[value])
+        plt.title('Распределение значений параметра_' + value + "_по длине линии")
+        plt.ylabel('Значение параметра_' + value)
+        plt.xlabel('Номер участка в ведоомости')
+        plt.xticks(rotation='vertical')
+        plt.xticks(np.arange(0, len(rail_streses.index), 1))
+        fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+        pdf.savefig(fig)  
+         
+        # plt.show()
+    # pdf.close()
+    
     tie_forces_itogo = pd.DataFrame(tie_forces)
     tie_forces_itogo.columns = ['mean_F_shpal_vert_kN','sigma_F_shpal_vert_kN',\
                                 'mean_F_shpal_side_kN', 'sigma_F_shpal_side_kN',\
@@ -283,12 +330,48 @@ def damage (project_path, project_number):
     tie_forces = line.join(tie_forces_itogo)
     tie_forces.to_csv(files_path + '/tie_forces_line.csv', sep= ";")
 
+    # Формирование графического отображения данных силового расчета в точке взаимодействия
+    # print(len(force_line.index))
+    values = ['mean_F_shpal_vert_kN','sigma_F_shpal_vert_kN','mean_F_shpal_side_kN','sigma_F_shpal_side_kN']
+    for value in values:
+        fig = plt.figure()
+        plt.bar(tie_forces.index, tie_forces[value])
+        plt.title('Распределение значений параметра_' + value + "_по длине линии")
+        plt.ylabel('Значение параметра_' + value)
+        plt.xlabel('Номер участка в ведоомости')
+        plt.xticks(rotation='vertical')
+        plt.xticks(np.arange(0, len(tie_forces.index), 1))
+        fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+        pdf.savefig(fig)  
+         
+        # plt.show()
+    # pdf.close()
+    
+
     balast_opzp_streses_itogo = pd.DataFrame(balast_opzp_streses)
     balast_opzp_streses_itogo.columns = ['mean_F_ballast_kPa', 'sigma_F_ballast_kPa', 'mean_F_OPZP_kPa', 'sigma_F_OPZP_kPa',\
                                         'd_prof_kPa^Xprof', 'd_ball_kPa^Xball', 'd_opzp_kPa^Xopzp']
 
     balast_opzp_streses = line.join(balast_opzp_streses_itogo)
     balast_opzp_streses.to_csv(files_path + '/balast_opzp_streses_line.csv', sep=";")
+    
+    # Формирование графического отображения данных силового расчета в точке взаимодействия
+    # print(len(force_line.index))
+    values = ['mean_F_ballast_kPa', 'sigma_F_ballast_kPa', 'mean_F_OPZP_kPa', 'sigma_F_OPZP_kPa']
+    for value in values:
+        fig = plt.figure()
+        plt.bar(balast_opzp_streses.index, balast_opzp_streses[value])
+        plt.title('Распределение значений параметра_' + value + "_по длине линии")
+        plt.ylabel('Значение параметра_' + value)
+        plt.xlabel('Номер участка в ведоомости')
+        plt.xticks(rotation='vertical')
+        plt.xticks(np.arange(0, len(balast_opzp_streses.index), 1))
+        fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+        pdf.savefig(fig)  
+         
+        # plt.show()
+    # pdf.close()
+     
 
     damage_itogo = pd.DataFrame()
     damage_itogo['d_rail_MPa^Xrail'] = rail_streses['d_rail_MPa^Xrail']
@@ -301,6 +384,24 @@ def damage (project_path, project_number):
     damage_itogo['d_opzp_kPa^Xopzp'] = balast_opzp_streses['d_opzp_kPa^Xopzp']
     damage = line.join(damage_itogo)
     damage.to_csv(files_path + '/damage_line.csv', sep= ";")
+
+    # Формирование графического отображения данных силового расчета в точке взаимодействия
+    # print(len(force_line.index))
+    values = ['d_rail_MPa^Xrail', 'd_fast_kN^Xfast', 'd_tie_kN^Xtie', 'd_shkol_kN^Xshkol', 'd_prof_kPa^Xprof', 'd_plan_kN^Xplan', 'd_ball_kPa^Xball', 'd_opzp_kPa^Xopzp']
+    for value in values:
+        fig = plt.figure()
+        plt.bar(damage.index, damage[value])
+        plt.title('Распределение значений параметра_' + value + "_по длине линии")
+        plt.ylabel('Значение параметра_' + value)
+        plt.xlabel('Номер участка в ведоомости')
+        plt.xticks(rotation='vertical')
+        plt.xticks(np.arange(0, len(damage.index), 1))
+        fig.savefig(report_path + str('\\') + "graf" +  str('\\') + value + ".png")
+        pdf.savefig(fig)  
+         
+        # plt.show()
+    pdf.close()
+
     response = "Расчет сил и напряжений по нейросетевой модели выполнен успешно! Выходные данные сформированы!"
     return (response)
     
