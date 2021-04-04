@@ -4,8 +4,8 @@
 			<ul class="topmenu"  >
 				<li><a href="#" > Проект <span class="fa fa-angle-down"></span></a>
 					<ul class="submenu">
-						<li><a href="#">Создать новый проект</a></li>
-						<li><a href="#">Загрузить существующий проект</a></li>
+						<li><a href="{% url 'projekt:create' %}">Создать новый проект</a></li>
+						<li><a href="{% url 'projekt:view' %}" >Загрузить существующий проект</a></li>
 					</ul>
 				</li>
 				<li><a href="#">Путевая инфраструктура<span class="fa fa-angle-down"></span></a>
@@ -79,6 +79,19 @@
 						
 					</ul>
 				</li>
-				<li><a href="#">Войти</a></li>
+				
+				{% if user.is_authenticated %}
+				<li>
+					<a href="{% url 'auth:edit' %}">
+						<span >вошел:{{ user.first_name|default:'Безымянный' }} </span>
+					</a>
+				</li>
+				<li> 
+					<a class="topmenu" href="{% url 'auth:logout' %}">Выйти из системы</a>
+					{% else %}
+					<a class="topmenu" href="{% url 'auth:login' %}">Войти</a>
+					{% endif %}
+				</li>
+				
 			</ul>
-		</nav>	
+</nav>	

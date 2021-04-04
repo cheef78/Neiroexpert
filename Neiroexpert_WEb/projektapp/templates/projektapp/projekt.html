@@ -1,0 +1,11 @@
+{% extends 'projektapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="basket_list">
+        {% include 'projektapp/includes/inc_projekt_list.html' %}
+    </div>
+    <button class="btn btn-round">
+        <a href="{% url 'main' %}">на главную</a>
+    </button>
+{% endblock %}

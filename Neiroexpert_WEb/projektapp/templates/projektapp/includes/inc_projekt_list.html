@@ -1,0 +1,48 @@
+<div  style = " font-size: 12px; text-align:center; margin-left:0px; "  >
+        <span style = "width:150px;" class="product_name" > &nbsp Номер проекта  &nbsp </span>
+        <span style = "width:150px;" class="product_name" >&nbsp Описание проекта &nbsp</span>
+        <span style = "width:250px;"  class="product_name">&nbsp Файл исходных данных для проекта &nbsp</span>
+        <span style = "width:150px;"  class="product_name">&nbsp Дата создания проекта  &nbsp</span>
+        <span style = "width:350px;"  class="product_name">&nbsp Действия с проектом  &nbsp</span>
+</div>
+<br>
+<br>
+
+{% for item in projekt_items %}
+    <div style = "font-size: 12px; text-align:center; margin-left:0px; padding:5px; margin:5px "   >
+        <span style = "width:150px;" class="product_name" >&nbsp{{ item.projekt_number }}&nbsp</span>
+        <span style = "width:150px;" class="product_name" ">&nbsp{{ item.description }}&nbsp</span>
+        <span style = "width:250px;" class="product_name" >&nbsp{{ item.document }}&nbsp</span>
+        <span style = "width:150px;" class="product_name" >&nbsp{{ item.add_datetime }}&nbsp</span>
+        <button style = "width:80px; height:30px;;" class="btn btn-round" >
+            {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+            <a href="#" >
+            Загрузить
+            </a>
+        </button>
+        <button style = "width:80px; height:30px;"  class="btn btn-round" >
+            {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+            <a href="#" >
+            Редакт
+            </a>
+        </button>
+        <button style = "width:80px; height:30px;" class="btn btn-round" >
+            {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+            <a href="#" >
+            Удалить
+            </a>
+        </button>
+        <br>
+        <br>
+    </div>
+    
+{% endfor %}
+{% if projekt_items %}
+    <div class="basket_summary">
+    <br>
+    
+        В базе зарегистрировано {{ projekt_items.count }} проект(ов) 
+        
+    </div>
+{% endif %}
+    

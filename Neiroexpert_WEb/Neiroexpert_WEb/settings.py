@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainapp' ,
+    'mainapp',
+    'authapp',
+    'projektapp'
+
 
 ]
 
@@ -132,3 +135,7 @@ ALLOWED_HOSTS = ['*']
 
 MEDIA_URL = '/projekts/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"projekts")
+
+AUTH_USER_MODEL = 'authapp.ProjektUser'
+
+LOGIN_URL = '/auth/login/'
