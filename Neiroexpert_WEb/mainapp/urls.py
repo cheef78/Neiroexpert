@@ -24,12 +24,13 @@ from django.conf.urls.static import static
 
 import mainapp.views as mainapp
 
+app_name = 'mainapp' 
+
 urlpatterns = [
     path( '' , mainapp.main, name = 'main'),
-    path('calc/', include('mainapp.urls', namespace='calc')),
-    path('admin/', admin.site.urls),
-    path('auth/', include('authapp.urls', namespace='auth')),
-    path( 'projekt/' , include( 'projektapp.urls' , namespace= 'projekt' )),
+    path( 'damage_neiro/<int:pk>' , mainapp.damage_neiro_calculate, name = 'damage_neiro' ),
+    path( 'damage_metoda/' , mainapp.damage_metoda_calculate, name = 'damage_metoda'),
+    
 ]
 
 if settings.DEBUG:

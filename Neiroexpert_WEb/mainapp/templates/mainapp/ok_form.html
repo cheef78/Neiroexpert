@@ -1,36 +1,7 @@
+{% extends 'mainapp/base.html' %}
 {% load static %}
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>НЕЙРОЭКСПЕРТ - ПУТЬ</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-theme.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/font-awesome/css/font-awesome.css' %}">
-</head>
-<body>
-	<div class="container" style = "width: 1180px;">
-		<div class="slider" style = "margin:15px; height: 100px; ">
-			<a href="https://www.vniizht.ru/" target="_blank" class="logo" style = "width:175px; height: 100px; background-image: url(/static/img/logo_vniizht.webp); background-repeat: no-repeat; margin:5px; padding:10px">
-			</a>
-        	<span class="text-slider green" style = "width:800px; margin:0; margin-left:35px; margin-top:05px; ">
-			<br>
-			
-				Научный информационно - аналитический центр (НИАЦ)
-				<br>
-			    <br> 
-				Отдел комплексных инновационных проектов (ОКИП)
-			</span>
-		</div>
-        
-		{% include 'mainapp/includes/inc_main_menu.html' %}
-		<br>
-		{% include 'mainapp/includes/inc_active_projekt.html' %}   
+{% block content %}
 		<br> 
-
 		<h3 style = "text-align:center;">
 		{{fuction_result}}
 		<br>
@@ -55,45 +26,4 @@
 		<button>Вернуться на главную страницу</button> </form>
 		</h5>
 		<br>
-		<div class="footer">
-			<div class="text-footer">
-				<h3> контакты </h3>
-				<h4>
-						Научный информационно-аналитический центр (НИАЦ) 
-						196128, г. Санкт-Петербург,	ул. Благодатная, д. 10, стр. 1,
-						8 этаж, оф. 825, Тел.: +7(499) 260-41-58 <br>
-						<a href="mailto:sekretar_niac@vniizht.ru">
-							<span> E-mail: sekretar_niac@vniizht.ru</span>
-						</a>
-						
-				</h4>
-			</div>
-			<div class="text-footer">
-				<h3>полезная информация</h3>
-				<h4>
-						Центральный офис АО «ВНИИЖТ»
-						129626, г.Москва, ул. 3-я Мытищинская, д. 10, 
-						Справочные телефоны: +7 (499) 260-41-11 +7 (495) 602-83-33
-						Факс:+7 (495) 602-84-84 
-						<br>
-						<a href="mailto:info@vniizht.ru">
-							<span> E-mail: info@vniizht.ru</span>
-						</a>
-				</h4>
-			</div>
-					
-			{% comment %} <div class="text-footer" >
-				<div class="social" style = " width:150 px; margin-top:45px;  margin:15px; " >
-					<a href="#" class="social1"></a>
-					<a href="#" class="social2"></a>
-					<a href="#" class="social3"></a>
-					<a href="#" class="social4"></a>
-				</div>
-			</div> {% endcomment %}
-					
-				
-				
-		</div>	
-	</div>
-</body>
-</html>
+		{% endblock %}

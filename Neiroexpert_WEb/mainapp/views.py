@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from damage.damage import ForceNeiroCalc
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from projektapp.models import Projekt
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.template.loader import render_to_string
+from django.http import JsonResponse
+from projektapp.forms import ProjektCreateForm
+from authapp.models import ProjektUser
 
 
 
@@ -10,9 +18,13 @@ from damage.damage import ForceNeiroCalc
 def main (request):
     return render(request, 'mainapp/index.html' )
 
-def damage_neiro_calculate (request):
+@login_required
+def damage_neiro_calculate (request, pk):
+    projekt_item = get_object_or_404(Projekt, pk=pk)
+
     project_path = r'C:/Users/suslo/Google Диск/2,5 млрд/Neiroexpert/Neiroexpert_WEb/projekts'
-    project_number = 3
+    project_number = int(projekt_item.projekt_number)
+    print (project_number)
     damage = ForceNeiroCalc(project_path, project_number)
     result = damage.damage()
                
@@ -26,7 +38,7 @@ def damage_neiro_calculate (request):
             pic_full_name = "/projekts/" + str(project_number) + "/graf/" + pic + ".png"
             pic_full_names.append(pic_full_name)
     else:
-        massage = "ОШИБКА ИСПОЛНЕНИЯ АЛГОРИТМА! Расчет сил и напряжений по нейросетевой модели НЕ выполнен! Выходные данные НЕ сформированы!" 
+        massage = "ОШИБКА ИСПОЛНЕНИЯ АЛГОРИТМА! ИСХОДНЫЕ ДАННЫЕ НЕ ВАЛИДНЫ ИЛИ ОТСУТСТВУЮТ!! ВЫПОЛНИТЕ ПРОВЕРКУ ИСХОДНЫХ ДАННЫХ. ЗАГРУЗИТЕ И АКТИВИРУЙТЕ РАСЧЕТНЫЙ ПРОЕКТ! Расчет сил и напряжений по нейросетевой модели НЕ выполнен! Выходные данные НЕ сформированы!" 
         desc_names = ()
         pic_full_names = ()
             
@@ -35,7 +47,8 @@ def damage_neiro_calculate (request):
         'fuction_result':massage,
         'pic_names':pic_full_names,
         'project_number':project_number,
-        'desc_names':desc_names, 
+        'desc_names':desc_names,
+        'item': projekt_item 
     }
     return render(request, 'mainapp/ok_form.html', content )
 
