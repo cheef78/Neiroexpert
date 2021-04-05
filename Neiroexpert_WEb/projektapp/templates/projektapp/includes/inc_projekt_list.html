@@ -1,3 +1,4 @@
+{% load static %}
 <div  style = " font-size: 12px; text-align:center; margin-left:0px; "  >
         <span style = "width:150px;" class="product_name" > &nbsp Номер проекта  &nbsp </span>
         <span style = "width:150px;" class="product_name" >&nbsp Описание проекта &nbsp</span>
@@ -14,19 +15,19 @@
         <span style = "width:150px;" class="product_name" ">&nbsp{{ item.description }}&nbsp</span>
         <span style = "width:250px;" class="product_name" >&nbsp{{ item.document }}&nbsp</span>
         <span style = "width:150px;" class="product_name" >&nbsp{{ item.add_datetime }}&nbsp</span>
-        <button style = "width:80px; height:30px;;" class="btn btn-round" >
+        <button style = "width:100px; height:30px;font-size: 10px;" class="btn btn-round" >
             {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
-            <a href="#" >
-            Загрузить
+            <a href="{% url 'projekt:load' item.pk   %}" >
+                Активировать
             </a>
         </button>
-        <button style = "width:80px; height:30px;"  class="btn btn-round" >
+        <button style = "width:110px; height:30px; font-size: 10px;"  class="btn btn-round" >
             {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
             <a href="#" >
-            Редакт
+            Редактировать
             </a>
         </button>
-        <button style = "width:80px; height:30px;" class="btn btn-round" >
+        <button style = "width:80px; height:30px;font-size: 10px;" class="btn btn-round" >
             {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
             <a href="#" >
             Удалить

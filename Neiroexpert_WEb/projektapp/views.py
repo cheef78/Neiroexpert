@@ -43,6 +43,35 @@ def projekt(request):
     }
     return render(request, 'projektapp/projekt.html', content)
 
+@login_required
+def projekt_load(request, pk):
+    title = 'Проекты'
+    projekt_item = get_object_or_404(Projekt, pk=pk)
+    
+    print (projekt_item, 'воть')
+    content = {
+              'title': title,
+              'item': projekt_item,
+              }
+    return render(request, 'mainapp/index.html', content)  
+
+
+# @user_passes_test(lambda u: u.is_superuser)
+# def category_update(request, pk):
+#     title = 'категории/редактирование'
+#     edit_category = get_object_or_404(ProductCategory, pk=pk)
+#     if request.method == 'POST':
+#         edit_form = ProductCategoryEditForm(request.POST, request.FILES, instance=edit_category)
+#         if edit_form.is_valid():
+#             edit_form.save()
+#             return HttpResponseRedirect(reverse('admin:category_update', args=[edit_category.pk]))
+#     else:
+#         edit_form = ProductCategoryEditForm(instance=edit_category)
+#     content = {'title': title, 'update_form': edit_form}
+#     return render(request, 'adminapp/category_update.html', content)
+
+
+
 # @login_required
 # def projekt_remove(request, pk):
 #     basket_record = get_object_or_404(Basket, pk=pk)

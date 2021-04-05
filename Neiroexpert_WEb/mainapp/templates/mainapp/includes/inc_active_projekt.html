@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="basket_list">
+    <div  style = " font-size: 12px; text-align:center; margin:0px; padding:0px "  >
+        <h3>
+         Активный проект
+        </h3>
+    </div>
+    <div  style = " font-size: 10px; text-align:center; margin-left:0px;margin:0px; padding:0px "  >
+        <span style = "width:150px;" class="product_name" > &nbsp Номер проекта  &nbsp </span>
+        <span style = "width:150px;" class="product_name" >&nbsp Описание проекта &nbsp</span>
+        <span style = "width:250px;"  class="product_name">&nbsp Файл исходных данных для проекта &nbsp</span>
+        <span style = "width:150px;"  class="product_name">&nbsp Дата создания проекта  &nbsp</span>
+    </div>
+    <br>
+    <div style = "font-size: 10px; text-align:center; margin-left:0px; padding:5px; margin:5px "   >
+        <span style = "width:150px;" class="product_name" >&nbsp{{ item.projekt_number }}&nbsp</span>
+        <span style = "width:150px;" class="product_name" ">&nbsp{{ item.description }}&nbsp</span>
+        <span style = "width:250px;" class="product_name" >&nbsp{{ item.document }}&nbsp</span>
+        <span style = "width:150px;" class="product_name" >&nbsp{{ item.add_datetime }}&nbsp</span>
+    </div>
+ </div>
+    
