@@ -1,0 +1,6 @@
+;vag_type;p_os;gamma;gamma_20;gamma_40;gamma_60;gamma_80;gamma_100;gamma_120;gamma_140;meankver_force;meankgor_force;meankprd_force;meankram_force;rmskver_force;rmskgor_force;rmskprd_force;rmskram_force
+0;1;12;0.1;0.0;0.2;0.2;0.2;0.25;0.1;0.05;1;1;1;1;1;1;1;1
+1;2;10;0.2;0.05;0.2;0.2;0.2;0.2;0.15;0.0;1;1;1;1;1;1;1;1
+2;3;25;0.4;0.2;0.2;0.4;0.2;0.0;0.0;0.0;1;1;1;1;1;1;1;1
+3;4;27;0.3;0.2;0.2;0.5;0.1;0.0;0.0;0.0;1;1;1;1;1;1;1;1
+4;5;27;0.0;0.2;0.2;0.5;0.1;0.0;0.0;0.0;1;1;1;1;1;1;1;1

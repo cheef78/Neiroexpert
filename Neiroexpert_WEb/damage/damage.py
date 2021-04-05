@@ -1,8 +1,8 @@
 class ForceNeiroCalc():
-    def  __init__(self,project_path, project_number):
+    def  __init__(self,project_path, project_number, path_init_file):
         self.project_path = project_path 
         self.project_number = project_number 
-        
+        self.path_init_file = path_init_file
     def damage (self):    
         try:
             import pathlib
@@ -10,7 +10,7 @@ class ForceNeiroCalc():
 
             files_path = self.project_path + str('\\') + str(self.project_number)
             pic_path = files_path + str('\\') + "graf" +  str('\\')
-
+            init_file =  self.project_path + str('\\') + str(self.path_init_file)
             if not os.path.exists(files_path):
                 os.mkdir(files_path)
             else:
@@ -67,13 +67,19 @@ class ForceNeiroCalc():
 
             # schitivanie isxodnix dannix
         
-            line = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='line')
-            trains = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='trains')
-            pod_sos = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='pod_sos')
-            vsp_konstr = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='vsp_constr')
-            damage_koef = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='damage_koeff')
-            criteria = pd.read_excel(files_path + '/dannye.xlsx', sheet_name='criteria')
-
+            line = pd.read_excel(init_file, sheet_name='line')
+            trains = pd.read_excel(init_file, sheet_name='trains')
+            pod_sos = pd.read_excel(init_file, sheet_name='pod_sos')
+            vsp_konstr = pd.read_excel(init_file, sheet_name='vsp_constr')
+            damage_koef = pd.read_excel(init_file, sheet_name='damage_koeff')
+            criteria = pd.read_excel(init_file, sheet_name='criteria')
+            
+            line.to_csv(files_path + '/line.csv', sep=";") 
+            trains.to_csv(files_path + '/trains.csv', sep=";")
+            pod_sos.to_csv(files_path + '/pod_sos.csv', sep=";")
+            damage_koef.to_csv(files_path + '/damage.csv', sep=";")
+            criteria.to_csv(files_path + '/criteria.csv', sep=";")
+            
             # бЛОК вычисления сил для каждого элемента плана с полным учетом вагонопотока на линии
             force_line = np.zeros((len(line.index),22))
             for index_line in range(len(line.index)):

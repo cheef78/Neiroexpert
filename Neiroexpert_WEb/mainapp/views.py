@@ -16,16 +16,20 @@ from authapp.models import ProjektUser
 # Create your views here.
 
 def main (request):
-    return render(request, 'mainapp/index.html' )
+    projekt_item = {'pk':1}
+    content = {
+        'item': projekt_item 
+    }
+    return render(request, 'mainapp/index.html', content )
 
 @login_required
 def damage_neiro_calculate (request, pk):
     projekt_item = get_object_or_404(Projekt, pk=pk)
-
-    project_path = r'C:/Users/suslo/Google Диск/2,5 млрд/Neiroexpert/Neiroexpert_WEb/projekts'
     project_number = int(projekt_item.projekt_number)
-    print (project_number)
-    damage = ForceNeiroCalc(project_path, project_number)
+    path_init_file = projekt_item.document
+    project_path = r'C:/Users/suslo/Google Диск/2,5 млрд/Neiroexpert/Neiroexpert_WEb/projekts'
+    print (path_init_file)
+    damage = ForceNeiroCalc(project_path, project_number, path_init_file)
     result = damage.damage()
                
     if result == True:
