@@ -58,7 +58,15 @@
 				</li>
 				<li><a href="#">Помощь<span class="fa fa-angle-down"></span></a>
 					<ul class="submenu">
-						<li><a href="#">О программе</a></li>
+						<li><a href="#">О программе</a>
+							<ul class="submenu">
+								<li><a href='{{ help_info.init_create.url }}' target="_blank">Описание программы. Регистрация пользователя</a></li>
+								<li><a href='{{ help_info.projekt_create_activate.url }}' target="_blank">Создание файла исходных данных. Создание и активация проекта</a></li>
+								<li><a href='{{ help_info.init_file.url }}' target="_blank">Шаблон файла исходных данных</a></li>
+								<li><a href='{{ help_info.projekt_neiro_calc.url }}'>Выполнение расчетов. Анализ результатов</a></li>
+								<li><a href="#">Описание расчетного алгоритма</a></li>
+							</ul>
+						</li>
 						<li><a href="#">Обратиться к разработчику<span class="fa fa-angle-right"></span></a>
 							<ul class="submenu">
 								<li><a href="mailto:suslov.oleg@vniizht.ru">

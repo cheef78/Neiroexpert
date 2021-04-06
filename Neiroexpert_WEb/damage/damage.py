@@ -9,12 +9,15 @@ class ForceNeiroCalc():
             import os
             from django.conf import settings
             from projektapp.models import Projekt
+            from mainapp import views as mainapp 
             from projektapp.models import projekt_directory_path
             from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+            from django.shortcuts import render
             
             projekt_item = get_object_or_404(Projekt, pk=self.projekt_pk)
             
-            files_path = self.projekt_path + str('\\') + str(projekt_item.projekt_number)+ str('\\neiro_damage')
+            
+            files_path = self.projekt_path + str('\\') + str(self.projekt_pk)+ str('\\neiro_damage')
             pic_path = files_path + str('\\') + "graf" +  str('\\')
             init_file =  self.projekt_path + str('\\') + str(projekt_item.document)
             print(files_path, pic_path, init_file, projekt_item , 'до проверки папок в нейродамадж')
@@ -260,7 +263,7 @@ class ForceNeiroCalc():
 
 
 
-
+            print (' начало расчета напряжений' )
             # бЛОК вычисления напряжений в рельсах для каждого элемента линии с полным учетом поездопотока и уклона на линии
             #вычисления ведутся для осредненных значений
             rail_streses = np.zeros((len(line.index),7))
@@ -269,37 +272,47 @@ class ForceNeiroCalc():
 
             for index_line in range(len(line.index)):
                 input_val = np.array([0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0])
-                rail = line['rail'].loc[line['rail'].index == index_line].values 
-                tie = line['tie'].loc[line['tie'].index == index_line].values
-                fasten = line['fasten'].loc[line['fasten'].index == index_line].values
-                input_val[10] = line['hball_sm'].loc[line['hball_sm'].index == index_line].values
-                rad_m = line['rad_m'].loc[line['rad_m'].index == index_line].values
-                
-                if rad_m > 1200:
-                    epur = 1840
-                else:
-                    epur = 2000
-                ballast = 'sheb'
-                proklad = 'tipov'
+                # rail = line['rail'].loc[line['rail'].index == index_line].values 
+                # tie = line['tie'].loc[line['tie'].index == index_line].values
+                # fasten = line['fasten'].loc[line['fasten'].index == index_line].values
+                # input_val[10] = line['hball_sm'].loc[line['hball_sm'].index == index_line].values
+                # rad_m = line['rad_m'].loc[line['rad_m'].index == index_line].values
+                print ('выборки из таблицы ВСП - начало' )
+                vsp_index = line['vsp_const_numb'].loc[line['vsp_const_numb'].index == index_line].values[0]
+                print (vsp_index, 'выборки из таблицы - номер конструкции ВСП' )
+                epur = vsp_konstr['epur'].loc[vsp_konstr['epur'].index == vsp_index+1].values[0]
+                print (epur, 'выборки из таблицы - epur' )
+                input_val[10] = vsp_konstr['hball_sm'].loc[vsp_konstr['hball_sm'].index == vsp_index+1].values[0]
+                print (input_val[10], 'выборки из таблицы - hball_sm' )
+                input_val[11] = vsp_konstr['ballast_type'].loc[vsp_konstr['ballast_type'].index == vsp_index+1].values[0]
+                print (input_val[11], 'выборки из таблицы - ballast_type' )
+                # if rad_m > 1200:
+                #     epur = 1840
+                # else:
+                #     epur = 2000
+                # ballast = 'sheb'
+                # proklad = 'tipov'
                 input_val[6] = 100000/epur
-                input_val[11] = 1
-            
-                vsp_index = vsp_konstr.index[(vsp_konstr['rail'] == rail[0]) & (vsp_konstr['epur'] == epur)\
-                                            & (vsp_konstr['tie'] == tie[0]) & (vsp_konstr['fasten'] == fasten[0])].tolist()
-                if len(vsp_index) == 0:
-                    vsp_index = vsp_konstr.index[(vsp_konstr['rail'] == rail[0]) & (vsp_konstr['epur'] == epur)\
-                                            & (vsp_konstr['tie'] == tie[0]) & (vsp_konstr['fasten'] == 'all')].tolist()
-                if len(vsp_index) == 0:
-                    vsp_index = vsp_konstr.index[(vsp_konstr['rail'] == rail[0]) & (vsp_konstr['epur'] == epur)\
-                                            & (vsp_konstr['tie'] == tie[0])].tolist()
-                if len(vsp_index) == 0:
-                    print ('В базе отсуствует соответствующая конструкция пути')
-                    print ('Для расчета будет принята типовая конструкция пути - Р65, жб шпалы, щеб, 1840 шт/км, ЖБР-Ш')
-                    vsp_index = [4]
-                if len(vsp_index) > 1:
-                    vsp_index = [vsp_index[0]] 
-                if isinstance(vsp_index, list):
-                    vsp_index = vsp_index[0]
+                
+                
+                # vsp_index = vsp_konstr.index[(vsp_konstr['rail'] == rail[0]) & (vsp_konstr['epur'] == epur)\
+                #                             & (vsp_konstr['tie'] == tie[0]) & (vsp_konstr['fasten'] == fasten[0])].tolist()
+                # if len(vsp_index) == 0:
+                #     vsp_index = vsp_konstr.index[(vsp_konstr['rail'] == rail[0]) & (vsp_konstr['epur'] == epur)\
+                #                             & (vsp_konstr['tie'] == tie[0]) & (vsp_konstr['fasten'] == 'all')].tolist()
+                # if len(vsp_index) == 0:
+                #     vsp_index = vsp_konstr.index[(vsp_konstr['rail'] == rail[0]) & (vsp_konstr['epur'] == epur)\
+                #                             & (vsp_konstr['tie'] == tie[0])].tolist()
+                # if len(vsp_index) == 0:
+                #     print ('В базе отсуствует соответствующая конструкция пути')
+                #     print ('Для расчета будет принята типовая конструкция пути - Р65, жб шпалы, щеб, 1840 шт/км, ЖБР-Ш')
+                #     vsp_index = [4]
+                # if len(vsp_index) > 1:
+                #     vsp_index = [vsp_index[0]] 
+                # if isinstance(vsp_index, list):
+                #     vsp_index = vsp_index[0]
+              
+
                 input_val[4] = vsp_konstr['kg_sm'].loc[vsp_konstr['kg_sm'].index == vsp_index].values 
                 input_val[5] = vsp_konstr['kv_sm'].loc[vsp_konstr['kv_sm'].index == vsp_index].values 
                 input_val[7] = vsp_konstr['wg_cm3'].loc[vsp_konstr['wg_cm3'].index == vsp_index].values 
@@ -476,9 +489,13 @@ class ForceNeiroCalc():
             zip_file.close()
             projekt_item.neiro_damage_flag = True
             projekt_item.neiro_damage_result = (files_path + '\\neiro_damage_result.zip')
+            projekt_item.process_info = ('Процесс завершен успешно.')
             projekt_item.save()
 
 
             return (True)
         except:
+            projekt_item.process_info = ('Ошибка исполнения. Процесс прерван.')
+            projekt_item.neiro_damage_flag = False
+            projekt_item.save()
             return (False) 

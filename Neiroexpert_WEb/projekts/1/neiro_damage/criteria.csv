@@ -1,8 +1,0 @@
-;repair_name;repear_price;max_year;tonnag;numb_2st;zagrzn;rail;tie_viplesk;tie_damg;fast_damg;podklad_damg;indx_predotkz;chast_otkaz;koeff_rasxod;dolya_ammortiz
-0;kap_new;21828.742;40.0;1400.0;;30.0;4.0;4.0;15.0;15.0;;;0.2;;0.5
-1;kap_old;11641.719;;;;30.0;4.0;4.0;15.0;15.0;;;;;
-2;sred;3553.8;;;;30.0;;3.0;10.0;12.0;;0.18;;0.15;
-3;rail_sred;10727.423;;700.0;;30.0;4.0;3.0;10.0;12.0;;;;;
-4;podyom;2548.12;;;30.0;;;3.0;13.0;15.0;35.0;0.18;;0.15;
-5;rail ;5681.22;;700.0;;;4.0;;;;0.0;;;;
-6;vipr;925.956;;;15.0;30.0;;3.0;10.0;10.0;;0.18;;;

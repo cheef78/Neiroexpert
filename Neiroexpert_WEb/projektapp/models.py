@@ -16,3 +16,4 @@ class Projekt (models.Model):
     add_datetime = models.DateTimeField(verbose_name= 'время' , auto_now_add= True )
     neiro_damage_result = models.FileField(verbose_name= 'файл с результатами расчетов', upload_to='isxod_dannie/', blank = True)
     neiro_damage_flag = models.BooleanField(verbose_name= 'Результат выполнения расчетов сил/повреждаемостей по нейромодели', blank = False, default=False)
+    process_info = models.CharField(verbose_name= 'Информация о состоянии процесса', max_length=255, blank = False, default='ожидание действия оператора')
