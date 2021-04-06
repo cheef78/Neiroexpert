@@ -16,8 +16,10 @@ class ForceNeiroCalc():
             
             projekt_item = get_object_or_404(Projekt, pk=self.projekt_pk)
             
-            
-            files_path = self.projekt_path + str('\\') + str(self.projekt_pk)+ str('\\neiro_damage')
+            files_path = self.projekt_path + str(self.projekt_pk)
+            if not os.path.exists(files_path):
+                os.mkdir(files_path)
+            files_path = files_path + str('/neiro_damage')
             pic_path = files_path + str('\\') + "graf" +  str('\\')
             init_file =  self.projekt_path + str('\\') + str(projekt_item.document)
             print(files_path, pic_path, init_file, projekt_item , 'до проверки папок в нейродамадж')
@@ -28,7 +30,6 @@ class ForceNeiroCalc():
                 path = pathlib.Path(files_path)
                 for p in path.glob('*.*'):
                     os.remove(p)
-
             
             if not os.path.exists(pic_path):
                 os.mkdir(pic_path)
@@ -36,6 +37,10 @@ class ForceNeiroCalc():
                 path = pathlib.Path(pic_path)
                 for p in path.glob('*.*'):
                     os.remove(p)
+            
+            
+
+
 
             print(files_path, pic_path, init_file, projekt_item , 'после проверки папок в нейродамадж')
             

@@ -32,7 +32,7 @@ def damage_neiro_calculate (request, pk):
     projekt_pk = int(projekt_item.pk)
     projekt_number = projekt_item.projekt_number
     # path_init_file = projekt_item.document
-    projekt_path = r'C:/Users/suslo/Google Диск/2,5 млрд/Neiroexpert/Neiroexpert_WEb/projekts'
+    projekt_path = r'C:\Users\suslo\\Google Диск\\2,5 млрд\Neiroexpert\neiroexpert_web\projekts\\'
     print (projekt_item,projekt_pk,projekt_number  )
     damage = ForceNeiroCalc(projekt_path, projekt_pk)
     result = damage.damage()
