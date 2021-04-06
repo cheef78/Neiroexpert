@@ -17,7 +17,7 @@ from django.conf import settings
 # Create your views here.
 
 def main (request):
-    projekt_item = {'pk':1}
+    projekt_item = {'pk':0}
     content = {
         'item': projekt_item 
     }

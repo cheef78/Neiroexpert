@@ -85,6 +85,7 @@ class ForceNeiroCalc():
             line.to_csv(files_path + '/line.csv', sep=";") 
             trains.to_csv(files_path + '/trains.csv', sep=";")
             pod_sos.to_csv(files_path + '/pod_sos.csv', sep=";")
+            vsp_konstr.to_csv(files_path + '/vsp_konstr.csv', sep=";")
             damage_koef.to_csv(files_path + '/damage.csv', sep=";")
             criteria.to_csv(files_path + '/criteria.csv', sep=";")
             
@@ -234,7 +235,7 @@ class ForceNeiroCalc():
             
             # Формирование графического отображения данных силового расчета в точке взаимодействия
             
-            pdf = matplotlib.backends.backend_pdf.PdfPages(files_path + '\\neiro_damage_result.pdf')
+            pdf = matplotlib.backends.backend_pdf.PdfPages(files_path + '\\neiro_damage_graf_result.pdf')
             
             # print(len(force_line.index))
             values = ['Mean_F_vertR_kN', 'Mean_F_vertL_kN', 'Mean_F_vert_kN', 'sigma_F_vertR_kN', 'sigma_F_vertL_kN',\
@@ -459,13 +460,25 @@ class ForceNeiroCalc():
             #     result_zip.write(p, compress_type=zipfile.ZIP_DEFLATED)
             # result_zip.close()
             # # path_init_file = projekt_item.document
-            projekt_item.neiro_damage_flag = True
-            projekt_item.neiro_damage_result = (files_path + '\\neiro_damage_result.pdf')
-            projekt_item.save()
+            
             # pdf_file = r'C:\Users\suslo\Google Диск\2,5 млрд\Neiroexpert\Neiroexpert_WEb\projekts\10\all_result.pdf'
             # print (pdf_file)
             # projekt_directory_path(insteance, pdf_file)
-            
+            import zipfile
+            # prevent adding zip to itself if the old zip is left in the directory
+            zip_path = os.path.join(files_path,'neiro_damage_result.zip')
+            if os.path.exists(zip_path):
+                os.unlink(zip_path)
+            dirlist = os.listdir(files_path)
+            zip_file = zipfile.ZipFile(zip_path, 'w')
+            for file_name in dirlist:
+                zip_file.write(os.path.join(files_path, file_name), file_name)
+            zip_file.close()
+            projekt_item.neiro_damage_flag = True
+            projekt_item.neiro_damage_result = (files_path + '\\neiro_damage_result.zip')
+            projekt_item.save()
+
+
             return (True)
         except:
             return (False) 
