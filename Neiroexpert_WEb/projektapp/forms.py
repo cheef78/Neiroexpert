@@ -33,16 +33,16 @@ class ProjektCreateForm(forms.ModelForm):
 
 
 
-# class ProductEditForm(forms.ModelForm):
-#     class Meta:
-#         model = Product
-#         fields = '__all__'
+class ProjektEditForm(forms.ModelForm):
+    class Meta:
+        model = Projekt
+        fields = '__all__'
 
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         for field_name, field in self.fields.items():
-#             field.widget.attrs['class'] = 'form-control'
-#             field.help_text = ''
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            field.help_text = ''
 
 
 

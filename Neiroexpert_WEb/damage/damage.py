@@ -1,16 +1,24 @@
 class ForceNeiroCalc():
-    def  __init__(self,project_path, project_number, path_init_file):
-        self.project_path = project_path 
-        self.project_number = project_number 
-        self.path_init_file = path_init_file
+    def  __init__(self,projekt_path, projekt_pk):
+        self.projekt_path = projekt_path 
+        self.projekt_pk = projekt_pk 
+        
     def damage (self):    
         try:
             import pathlib
             import os
-
-            files_path = self.project_path + str('\\') + str(self.project_number)
+            from django.conf import settings
+            from projektapp.models import Projekt
+            from projektapp.models import projekt_directory_path
+            from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+            
+            projekt_item = get_object_or_404(Projekt, pk=self.projekt_pk)
+            
+            files_path = self.projekt_path + str('\\') + str(projekt_item.projekt_number)+ str('\\neiro_damage')
             pic_path = files_path + str('\\') + "graf" +  str('\\')
-            init_file =  self.project_path + str('\\') + str(self.path_init_file)
+            init_file =  self.projekt_path + str('\\') + str(projekt_item.document)
+            print(files_path, pic_path, init_file, projekt_item , 'до проверки папок в нейродамадж')
+        
             if not os.path.exists(files_path):
                 os.mkdir(files_path)
             else:
@@ -19,16 +27,16 @@ class ForceNeiroCalc():
                     os.remove(p)
 
             
-            if not os.path.exists(files_path + str('\\') + "graf"):
-                os.mkdir(files_path + str('\\') + "graf")
+            if not os.path.exists(pic_path):
+                os.mkdir(pic_path)
             else:
-                path = pathlib.Path(files_path + str('\\') + "graf")
+                path = pathlib.Path(pic_path)
                 for p in path.glob('*.*'):
                     os.remove(p)
 
-                
-            # print(files_path)
-            # gruzim biblioteki
+            print(files_path, pic_path, init_file, projekt_item , 'после проверки папок в нейродамадж')
+            
+            #gruzim biblioteki
             # obshie
             from array import array
             import time
@@ -226,7 +234,7 @@ class ForceNeiroCalc():
             
             # Формирование графического отображения данных силового расчета в точке взаимодействия
             
-            pdf = matplotlib.backends.backend_pdf.PdfPages(files_path + '\\all_result.pdf')
+            pdf = matplotlib.backends.backend_pdf.PdfPages(files_path + '\\neiro_damage_result.pdf')
             
             # print(len(force_line.index))
             values = ['Mean_F_vertR_kN', 'Mean_F_vertL_kN', 'Mean_F_vert_kN', 'sigma_F_vertR_kN', 'sigma_F_vertL_kN',\
@@ -239,7 +247,7 @@ class ForceNeiroCalc():
                 plt.bar(force_line.index, force_line[value])
                 plt.title('Распределение значений параметра_' + value + "_по длине линии")
                 plt.ylabel('Значение параметра_' + value)
-                plt.xlabel('Номер участка в ведоомости')
+                plt.xlabel('Номер участка в ведомости')
                 plt.xticks(rotation='vertical')
                 plt.xticks(np.arange(0, len(force_line.index), 1))
                 fig.savefig(pic_path + value + ".png")
@@ -378,7 +386,7 @@ class ForceNeiroCalc():
                 plt.bar(tie_forces.index, tie_forces[value])
                 plt.title('Распределение значений параметра_' + value + "_по длине линии")
                 plt.ylabel('Значение параметра_' + value)
-                plt.xlabel('Номер участка в ведоомости')
+                plt.xlabel('Номер участка в ведомости')
                 plt.xticks(rotation='vertical')
                 plt.xticks(np.arange(0, len(tie_forces.index), 1))
                 fig.savefig(pic_path + value + ".png")
@@ -403,7 +411,7 @@ class ForceNeiroCalc():
                 plt.bar(balast_opzp_streses.index, balast_opzp_streses[value])
                 plt.title('Распределение значений параметра_' + value + "_по длине линии")
                 plt.ylabel('Значение параметра_' + value)
-                plt.xlabel('Номер участка в ведоомости')
+                plt.xlabel('Номер участка в ведомости')
                 plt.xticks(rotation='vertical')
                 plt.xticks(np.arange(0, len(balast_opzp_streses.index), 1))
                 fig.savefig(pic_path + value + ".png")
@@ -433,7 +441,7 @@ class ForceNeiroCalc():
                 plt.bar(damage.index, damage[value])
                 plt.title('Распределение значений параметра_' + value + "_по длине линии")
                 plt.ylabel('Значение параметра_' + value)
-                plt.xlabel('Номер участка в ведоомости')
+                plt.xlabel('Номер участка в ведомости')
                 plt.xticks(rotation='vertical')
                 plt.xticks(np.arange(0, len(damage.index), 1))
                 fig.savefig(pic_path + value + ".png")
@@ -441,7 +449,23 @@ class ForceNeiroCalc():
                 
                 # plt.show()
             pdf.close()
-
+            # import zipfile
+            # result_zip = zipfile.ZipFile((files_path + '\\neiro_damage_result.zip'), 'w')
+            # zip_path = pathlib.Path(files_path)
+            # print (zip_path)
+            
+            # for p in zip_path.glob('*.*'):
+            #     print (zip_path.glob('*.*'))
+            #     result_zip.write(p, compress_type=zipfile.ZIP_DEFLATED)
+            # result_zip.close()
+            # # path_init_file = projekt_item.document
+            projekt_item.neiro_damage_flag = True
+            projekt_item.neiro_damage_result = (files_path + '\\neiro_damage_result.pdf')
+            projekt_item.save()
+            # pdf_file = r'C:\Users\suslo\Google Диск\2,5 млрд\Neiroexpert\Neiroexpert_WEb\projekts\10\all_result.pdf'
+            # print (pdf_file)
+            # projekt_directory_path(insteance, pdf_file)
+            
             return (True)
         except:
             return (False) 
