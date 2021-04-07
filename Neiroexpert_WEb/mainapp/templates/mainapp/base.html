@@ -33,9 +33,13 @@
 		{% block menu %}
 		{% include 'mainapp/includes/inc_main_menu.html' %} 
 		{% if item.pk == 0 %}
-			<h4>
-			Для начала работы создайте и активируйте проект через главное меню 
-			</h4>
+		    <div style = "display: flex; align-items: center;justify-content:center;">
+			<h5>
+			Для начала работы создайте и активируйте проект через главное меню.
+			<br>
+			Для детального обучения работе с программой: Помощь - О программе  
+			</h5>
+			</div>
         {% else %}
 			{% include 'mainapp/includes/inc_active_projekt.html' %}   
 		{% endif %}

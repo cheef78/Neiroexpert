@@ -95,11 +95,15 @@
 					</a>
 				</li>
 				<li> 
-					<a class="topmenu" href="{% url 'auth:logout' %}">Выйти из системы</a>
-					{% else %}
-					<a class="topmenu" href="{% url 'auth:login' %}">Войти</a>
+					<a href="{% url 'auth:logout' %}">Выйти из системы</a>
+					
 					{% endif %}
 				</li>
-				
+				{% if user.is_authenticated == False %}
+				<li>
+					<a href="{% url 'auth:login' %}">Войти</a>
+					{% endif %}
+				</li>
+
 			</ul>
 </nav>	

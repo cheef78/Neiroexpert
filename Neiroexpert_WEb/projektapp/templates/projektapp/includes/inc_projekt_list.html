@@ -23,13 +23,13 @@
         </button>
         <button style = "width:110px; height:30px; font-size: 10px;"  class="btn btn-round" >
             {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
-            <a href="#" >
+            <a href="{% url 'projekt:update' item.pk   %}" >
             Редактировать
             </a>
         </button>
         <button style = "width:80px; height:30px;font-size: 10px;" class="btn btn-round" >
             {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
-            <a href="#" >
+            <a href="{% url 'projekt:remove' item.pk   %}" >
             Удалить
             </a>
         </button>

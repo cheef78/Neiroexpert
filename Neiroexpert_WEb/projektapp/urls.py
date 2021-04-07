@@ -7,5 +7,6 @@ urlpatterns = [
     path( '' , projektapp.projekt, name= 'view' ),
     path( 'create/' , projektapp.projekt_create, name= 'create' ),
     path( 'load/<int:pk>' , projektapp.projekt_load, name= 'load' ),
-    # path('edit/<int:pk>/<int:quantity>/', projektapp.projekt_edit, name='edit')
+    path( 'remove/<int:pk>' , projektapp.projekt_remove, name= 'remove' ),
+    path('update/<int:pk>', projektapp.projekt_update, name='update')
 ]
