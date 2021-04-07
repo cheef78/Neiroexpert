@@ -282,15 +282,15 @@ class ForceNeiroCalc():
                 # fasten = line['fasten'].loc[line['fasten'].index == index_line].values
                 # input_val[10] = line['hball_sm'].loc[line['hball_sm'].index == index_line].values
                 # rad_m = line['rad_m'].loc[line['rad_m'].index == index_line].values
-                print ('выборки из таблицы ВСП - начало' )
+                # print ('выборки из таблицы ВСП - начало' )
                 vsp_index = line['vsp_const_numb'].loc[line['vsp_const_numb'].index == index_line].values[0]
-                print (vsp_index, 'выборки из таблицы - номер конструкции ВСП' )
+                # print (vsp_index, 'выборки из таблицы - номер конструкции ВСП' )
                 epur = vsp_konstr['epur'].loc[vsp_konstr['epur'].index == vsp_index+1].values[0]
-                print (epur, 'выборки из таблицы - epur' )
+                # print (epur, 'выборки из таблицы - epur' )
                 input_val[10] = vsp_konstr['hball_sm'].loc[vsp_konstr['hball_sm'].index == vsp_index+1].values[0]
-                print (input_val[10], 'выборки из таблицы - hball_sm' )
+                # print (input_val[10], 'выборки из таблицы - hball_sm' )
                 input_val[11] = vsp_konstr['ballast_type'].loc[vsp_konstr['ballast_type'].index == vsp_index+1].values[0]
-                print (input_val[11], 'выборки из таблицы - ballast_type' )
+                # print (input_val[11], 'выборки из таблицы - ballast_type' )
                 # if rad_m > 1200:
                 #     epur = 1840
                 # else:
