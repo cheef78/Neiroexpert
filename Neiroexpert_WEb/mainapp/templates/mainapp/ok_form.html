@@ -18,8 +18,10 @@
 		{% endfor %}
 		<br>
 		{% for pic in pic_names %}
-			<img src = "{{pic}}"  alt={{pic}} style = "margin-top:5px;  margin-left:10px; width:800px; height: 500px; ">
-		    <br>
+		    <div  style = "padding:0; margin:0; margin-left: auto; margin-right: auto; display: flex; align-items:center; justify-content: center ">
+				<img src = "{{pic}}"  alt={{pic}} style = "margin-top:5px;  margin-left:auto; margin-right:auto; width:800px; height: 500px; ">
+		    
+			</div>
 		{% endfor %}
 		<h5 style = "text-align:center;">
 		<form action="{% url 'main' %}">

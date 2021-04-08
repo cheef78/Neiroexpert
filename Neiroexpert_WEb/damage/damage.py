@@ -7,6 +7,22 @@ class ForceNeiroCalc():
         try:
             import pathlib
             import os
+            # from array import array
+            # import time
+            import numpy as np
+            import pandas as pd
+            import matplotlib
+            import zipfile
+            import matplotlib.pyplot as plt
+            # from numpy import random, arange
+            # import datetime
+            # import random
+            import sys
+            import warnings
+            warnings.simplefilter('ignore')
+            import matplotlib.backends.backend_pdf
+            plt.rcParams['figure.figsize'] = [15, 10]
+
             from django.conf import settings
             from projektapp.models import Projekt
             from mainapp import views as mainapp 
@@ -16,7 +32,7 @@ class ForceNeiroCalc():
             
             projekt_item = get_object_or_404(Projekt, pk=self.projekt_pk)
             
-            files_path = self.projekt_path + str(self.projekt_pk)
+            files_path = self.projekt_path + str('\\') + str(self.projekt_pk)
             if not os.path.exists(files_path):
                 os.mkdir(files_path)
             files_path = files_path + str('/neiro_damage')
@@ -46,23 +62,7 @@ class ForceNeiroCalc():
             
             #gruzim biblioteki
             # obshie
-            from array import array
-            import time
-            import numpy as np
-            import pandas as pd
-            import matplotlib
-            import matplotlib.pyplot as plt
-            from numpy import random, arange
-            import datetime
-            import random
-            from scipy import interpolate
-            import sys
-            import warnings
-            warnings.simplefilter('ignore')
-            import pathlib
-            import os
-            import matplotlib.backends.backend_pdf
-            plt.rcParams['figure.figsize'] = [15, 10]
+            
 
             # lichnie
             # from forces import vagon_1
@@ -482,7 +482,7 @@ class ForceNeiroCalc():
             # pdf_file = r'C:\Users\suslo\Google Диск\2,5 млрд\Neiroexpert\Neiroexpert_WEb\projekts\10\all_result.pdf'
             # print (pdf_file)
             # projekt_directory_path(insteance, pdf_file)
-            import zipfile
+            
             # prevent adding zip to itself if the old zip is left in the directory
             zip_path = os.path.join(files_path,'neiro_damage_result.zip')
             if os.path.exists(zip_path):
