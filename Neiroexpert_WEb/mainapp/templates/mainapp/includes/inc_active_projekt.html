@@ -11,7 +11,7 @@
         <span style = "width:250px;" class="product_name" >&nbsp Описание проекта &nbsp</span>
         <span style = "width:100px;"  class="product_name">&nbsp Дата создания проекта  &nbsp</span>
         <span style = "width:100px;"  class="product_name">&nbsp Результаты расчета  &nbsp</span>
-        <span style = "width:250px;"  class="product_name">&nbsp Информация о текущем статусе проекта  &nbsp</span>
+        <span style = "width:150px;"  class="product_name">&nbsp Информация о текущем статусе проекта  &nbsp</span>
         
     </div>
     <br>
@@ -21,12 +21,30 @@
         <span style = "width:250px;" class="product_name" ">&nbsp{{ item.description }}&nbsp</span>
         <span style = "width:100px;" class="product_name" >&nbsp{{ item.add_datetime }}&nbsp</span>
         <span style = "width:100px;" class="product_name" >&nbsp{{ item.neiro_damage_flag }}&nbsp</span>
-        <span style = "width:250px;" class="product_name" >&nbsp{{ item.process_info }}&nbsp</span>
+        <span style = "width:150px;" class="product_name" >&nbsp{{ item.process_info }}&nbsp</span>
         {% if item.neiro_damage_flag == True  %}
-            <button class="btn btn-round" style = "width:100px; height:30px;font-size: 8px; margin-right:250px"  >
+            <button class="btn btn-round" style = "width:100px; height:20px;font-size: 8px; margin:0; padding:0; "  >
                 {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
                 <a href='{{ item.neiro_damage_result.url }}' target="_blank" >
                     Скачать результаты
+                </a>
+            </button>
+            <button class="btn btn-round" style = "width:130px; height:20px;font-size: 8px; margin:0; padding:0;"  >
+                {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+                <a href="{% url 'projekt:view' %}" >
+                    Активировать другой проект
+                </a>
+            </button>
+            <button class="btn btn-round" style = "width:100px; height:20px;font-size: 8px; margin:0; padding:0;"  >
+                {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+                <a href="{% url 'projekt:create' %}" >
+                    Создать новый проект
+                </a>
+            </button>
+            <button class="btn btn-round" style = "width:100px; height:20px;font-size: 8px;margin:0; padding:0; "  >
+                {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+                <a href="{% url 'main' %}" >
+                    На главную страницу
                 </a>
             </button>
         {% endif %}

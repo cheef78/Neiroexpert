@@ -17,7 +17,7 @@
 
 </head>
 <body>
-	<div class="container" style = "width: 1180px;">
+	<div class="container" style = "width: 1180px; margin-left: auto; margin-right: auto;">
 		<div class="slider" style = "margin:15px; height: 100px; ">
 			<a href="https://www.vniizht.ru/" target="_blank" class="logo" style = "width:175px; height: 100px; background-image: url(/static/img/logo_vniizht.webp); background-repeat: no-repeat; margin:5px; padding:10px">
 			</a>
@@ -34,13 +34,30 @@
 		{% block menu %}
 		{% include 'mainapp/includes/inc_main_menu.html' %} 
 		{% if item.pk == 0 %}
-		    <div style = "display: flex; align-items: center;justify-content:center;">
+			{% if user.is_authenticated %}
+		    <div style = "display: flex; align-items: center;justify-content:center; ">
 			<h5>
-			Для начала работы создайте и активируйте проект через главное меню.
+			Для начала работы создайте новый или активируйте существующий проект через главное меню - Проект.
 			<br>
 			Для детального обучения работе с программой: Помощь - О программе  
 			</h5>
 			</div>
+			{% else %}
+			<div style = "display: flex; align-items: center;justify-content:center; ">
+			<h5>
+			Для начала работы:
+			<br>
+			1. При наличии учетной записи войдите в программу через главное меню - Войти.
+			<br>
+			2. При отсутсвии учетной записи создайте ее через главное меню - Войти - Регистрация.
+			<br>
+			 3. Создайте новый или активируйте существующий проект через главное меню - Проект.
+			<br>
+			4. Для детального обучения работе с программой: Помощь - О программе  
+			</h5>
+			</div>
+			{% endif %}
+
         {% else %}
 			{% include 'mainapp/includes/inc_active_projekt.html' %}   
 		{% endif %}
@@ -49,8 +66,8 @@
 		{% block content %}
         {% endblock %}
 				
-		<div class="footer">
-			<div class="text-footer">
+		<div class="footer" style =  "margin-left: auto; margin-right: auto;">
+			<div class="text-footer" style =  "margin-left: auto; margin-right: auto;">
 				<h3> контакты </h3>
 				<h4>
 						Научный информационно-аналитический центр (НИАЦ) 
@@ -62,7 +79,7 @@
 						
 				</h4>
 			</div>
-			<div class="text-footer">
+			<div class="text-footer" style =  "margin-left: auto; margin-right: auto;">
 				<h3>полезная информация</h3>
 				<h4>
 						Центральный офис АО «ВНИИЖТ»

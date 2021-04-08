@@ -28,6 +28,8 @@ def main (request):
 
 @login_required
 def damage_neiro_calculate (request, pk):
+    if pk == 0:
+        return HttpResponseRedirect(reverse('main'))
     projekt_item = get_object_or_404(Projekt, pk=pk)
     projekt_pk = int(projekt_item.pk)
     projekt_number = projekt_item.projekt_number
