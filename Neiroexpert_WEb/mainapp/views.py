@@ -76,3 +76,13 @@ def damage_metoda_calculate (request):
         'fuction_result':result 
     }
     return render(request, 'mainapp/ok_form.html', content )
+
+def in_progress(request):
+    projekt_item = {'pk':0}
+    help_info = get_object_or_404(HelpInfo, pk=1)
+    content = {
+        'item': projekt_item ,
+        'help_info':help_info,
+    }
+   
+    return render(request, 'mainapp/in_progress_form.html' , content )

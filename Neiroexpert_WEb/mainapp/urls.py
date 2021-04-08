@@ -30,6 +30,7 @@ urlpatterns = [
     path( '' , mainapp.main, name = 'main'),
     path( 'damage_neiro/<int:pk>' , mainapp.damage_neiro_calculate, name = 'damage_neiro' ),
     path( 'damage_metoda/' , mainapp.damage_metoda_calculate, name = 'damage_metoda'),
+    path( 'in_progress/' , mainapp.in_progress, name = 'in_progress'),
     
 ]
 
