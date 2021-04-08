@@ -71,6 +71,7 @@ def projekt_update(request, pk):
             # 'projekt_items': projekt_items,
             # }
             # return render(request, 'projektapp/projekt.html', content))
+            edit_form.save()
             return HttpResponseRedirect(reverse('projekt:view'))
     else:
         edit_form = ProjektEditForm(instance=edit_category)

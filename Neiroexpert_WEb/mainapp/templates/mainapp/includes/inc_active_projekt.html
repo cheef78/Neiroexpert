@@ -47,6 +47,34 @@
                     На главную страницу
                 </a>
             </button>
+        {% else%}
+            <button class="btn btn-round" style = "width:100px; height:20px;font-size: 8px; margin:0; padding:0; "  >
+                {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+                <a href="{% url 'projekt:update' item.pk %}" >
+                    Редактировать проект
+                </a>
+            </button>
+
+            <button class="btn btn-round" style = "width:130px; height:20px;font-size: 8px; margin:0; padding:0;"  >
+                {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+                <a href="{% url 'projekt:view' %}" >
+                    Активировать другой проект
+                </a>
+            </button>
+            <button class="btn btn-round" style = "width:100px; height:20px;font-size: 8px; margin:0; padding:0;"  >
+                {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+                <a href="{% url 'projekt:create' %}" >
+                    Создать новый проект
+                </a>
+            </button>
+            <button class="btn btn-round" style = "width:100px; height:20px;font-size: 8px;margin:0; padding:0; "  >
+                {% comment %} <a href="{% url 'basket:remove' item.pk %}" > {% endcomment %}
+                <a href="{% url 'main' %}" >
+                    На главную страницу
+                </a>
+            </button>
+
+
         {% endif %}
     </div>
  </div>

@@ -5,6 +5,7 @@ class ForceNeiroCalc():
         
     def damage (self):    
         try:
+            print ("Ипорт библиотек")
             import pathlib
             import os
             # from array import array
@@ -32,12 +33,12 @@ class ForceNeiroCalc():
             
             projekt_item = get_object_or_404(Projekt, pk=self.projekt_pk)
             
-            files_path = self.projekt_path + str('\\') + str(self.projekt_pk)
+            files_path = self.projekt_path + str('//') + str(self.projekt_pk)
             if not os.path.exists(files_path):
                 os.mkdir(files_path)
             files_path = files_path + str('/neiro_damage')
-            pic_path = files_path + str('\\') + "graf" +  str('\\')
-            init_file =  self.projekt_path + str('\\') + str(projekt_item.document)
+            pic_path = files_path + str('//') + "graf" +  str('//')
+            init_file =  self.projekt_path + str('//') + str(projekt_item.document)
             print(files_path, pic_path, init_file, projekt_item , 'до проверки папок в нейродамадж')
         
             if not os.path.exists(files_path):
@@ -80,10 +81,13 @@ class ForceNeiroCalc():
             from damage.tensions import f_shpal
             from damage.tensions import krom_tension
             
-
+            print ("начало расчетов. Загрузка исходных данных")
             # schitivanie isxodnix dannix
         
-            line = pd.read_excel(init_file, sheet_name='line')
+            line = pd.read_excel(open(init_file, 'rb'), sheet_name='line')
+
+            print ("начало расчетов. Загружены данные по линии")
+
             trains = pd.read_excel(init_file, sheet_name='trains')
             pod_sos = pd.read_excel(init_file, sheet_name='pod_sos')
             vsp_konstr = pd.read_excel(init_file, sheet_name='vsp_constr')
@@ -97,6 +101,7 @@ class ForceNeiroCalc():
             damage_koef.to_csv(files_path + '/damage.csv', sep=";")
             criteria.to_csv(files_path + '/criteria.csv', sep=";")
             
+            print ("расчеты. Расчеты сил")
             # бЛОК вычисления сил для каждого элемента плана с полным учетом вагонопотока на линии
             force_line = np.zeros((len(line.index),22))
             for index_line in range(len(line.index)):
