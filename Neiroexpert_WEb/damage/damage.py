@@ -33,7 +33,7 @@ class ForceNeiroCalc():
             
             projekt_item = get_object_or_404(Projekt, pk=self.projekt_pk)
             
-            files_path = self.projekt_path + str('//') + str(self.projekt_pk)
+            files_path = self.projekt_path + str('/') + str(self.projekt_pk)
             if not os.path.exists(files_path):
                 os.mkdir(files_path)
             files_path = files_path + str('/neiro_damage')
@@ -248,7 +248,7 @@ class ForceNeiroCalc():
             
             # Формирование графического отображения данных силового расчета в точке взаимодействия
             
-            pdf = matplotlib.backends.backend_pdf.PdfPages(files_path + '\\neiro_damage_graf_result.pdf')
+            pdf = matplotlib.backends.backend_pdf.PdfPages(files_path + '/neiro_damage_graf_result.pdf')
             
             # print(len(force_line.index))
             values = ['Mean_F_vertR_kN', 'Mean_F_vertL_kN', 'Mean_F_vert_kN', 'sigma_F_vertR_kN', 'sigma_F_vertL_kN',\
@@ -498,7 +498,8 @@ class ForceNeiroCalc():
                 zip_file.write(os.path.join(files_path, file_name), file_name)
             zip_file.close()
             projekt_item.neiro_damage_flag = True
-            projekt_item.neiro_damage_result = (files_path + '\\neiro_damage_result.zip')
+            # projekt_item.neiro_damage_result = settings.MEDIA_ROOT + str('/') + str(self.projekt_pk) + str('/neiro_damage/neiro_damage_result.zip')
+            projekt_item.neiro_damage_result = ('/') + str(self.projekt_pk) + str('/neiro_damage/neiro_damage_result.zip')
             projekt_item.process_info = ('Процесс завершен успешно.')
             projekt_item.save()
 
