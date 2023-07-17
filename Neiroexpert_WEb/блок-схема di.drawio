@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-07-17T22:33:16.591Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="wOGj4vH8qxorpKMxqmxZ" version="21.6.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-17T22:35:17.872Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="H_6WDAWS9BBr5wTJsE9y" version="21.6.2" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2977" dy="1003" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -79,13 +79,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-1" value="for Year in Yars:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="831.5" y="80" width="120" height="60" as="geometry" />
+          <mxGeometry x="831.5" y="50" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-59" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-2" target="P8JZlvMNbFZh8vozIxRp-58">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-2" value="for line in lines:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1010" y="250" width="120" height="40" as="geometry" />
+          <mxGeometry x="1010" y="190" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-69" target="P8JZlvMNbFZh8vozIxRp-4">
           <mxGeometry relative="1" as="geometry" />
@@ -108,7 +108,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-5" value="данные из массивов lines, pod_sos, trains, climat для Year" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1011.5" y="80" width="120" height="60" as="geometry" />
+          <mxGeometry x="1011.5" y="50" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-49" target="P8JZlvMNbFZh8vozIxRp-39">
           <mxGeometry relative="1" as="geometry" />
@@ -199,11 +199,11 @@
         <mxCell id="P8JZlvMNbFZh8vozIxRp-54" value="Оформить приведение в отдельную функцию с возможностью дальнейшей модификации&lt;br&gt;def&amp;nbsp; all_wheels_to_one (model_name для всех колес, func_type)&lt;br&gt;признак func_type определяет тип приведения. &lt;br&gt;В примере func_type = 1&amp;nbsp; - это среднесквадратичное приведение,&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1490" y="1050" width="560" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="P8JZlvMNbFZh8vozIxRp-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-58" target="P8JZlvMNbFZh8vozIxRp-3">
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-70" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-97" target="P8JZlvMNbFZh8vozIxRp-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-58" value="формирование коэффициентов от веса поездов trains и климата climat" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1010" y="310" width="120" height="60" as="geometry" />
+          <mxGeometry x="1011.5" y="250" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-66" target="P8JZlvMNbFZh8vozIxRp-11">
           <mxGeometry relative="1" as="geometry" />
@@ -221,7 +221,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-73" value="Массив Forces_one_side&lt;br&gt;_wheel = 0" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1011.5" y="180" width="120" height="40" as="geometry" />
+          <mxGeometry x="1011.5" y="130" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-75" target="P8JZlvMNbFZh8vozIxRp-66">
           <mxGeometry relative="1" as="geometry" />
@@ -270,6 +270,15 @@
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-94" value="применение коэффициентов от веса поездов trains и климата climat к massiv_model_&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;name_force&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1061" y="2000" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-98" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-58" target="P8JZlvMNbFZh8vozIxRp-97">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1072" y="310" as="sourcePoint" />
+            <mxPoint x="1130" y="405" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-97" value="for line in lines:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1011.5" y="330" width="120" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
