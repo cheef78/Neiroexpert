@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-07-17T22:30:34.356Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="mmm8BmoR-IXN9AgefhPt" version="21.6.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-17T22:33:16.591Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="wOGj4vH8qxorpKMxqmxZ" version="21.6.2" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="5987" dy="2408" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2977" dy="1003" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -256,14 +256,20 @@
         <mxCell id="P8JZlvMNbFZh8vozIxRp-88" value="massiv_model_&lt;br&gt;name_force = massiv_model_&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;name_force+massiv_vagon_type" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1130" y="1820" width="178.5" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-95" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-90" target="P8JZlvMNbFZh8vozIxRp-94">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-90" value="NEXT&lt;br&gt;&amp;nbsp;model_name" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1130" y="1980" width="178.5" height="40" as="geometry" />
+          <mxGeometry x="1130" y="1910" width="178.5" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="P8JZlvMNbFZh8vozIxRp-92" value="применение коэффициентов от веса поездов trains и климата climat к massiv_model_&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;name_force&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1130" y="1890" width="180" height="60" as="geometry" />
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-93" value="NEXT&lt;br&gt;line" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1061" y="2100" width="179" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="P8JZlvMNbFZh8vozIxRp-93" value="for line in lines:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1010" y="2130" width="120" height="40" as="geometry" />
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-96" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-94" target="P8JZlvMNbFZh8vozIxRp-93">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-94" value="применение коэффициентов от веса поездов trains и климата climat к massiv_model_&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;name_force&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1061" y="2000" width="180" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
