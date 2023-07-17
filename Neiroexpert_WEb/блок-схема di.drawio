@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-07-17T21:13:53.277Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="2zqvIgEM3zZD7P6VxRsn" version="21.6.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-17T21:17:53.101Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="6hlZxX0PHLfdup0oNwVy" version="21.6.2" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2440" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -85,7 +85,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-2" value="for line in lines:" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1010" y="270" width="120" height="60" as="geometry" />
+          <mxGeometry x="1010" y="250" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-61" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-3" target="P8JZlvMNbFZh8vozIxRp-4">
           <mxGeometry relative="1" as="geometry" />
@@ -102,7 +102,7 @@
         <mxCell id="P8JZlvMNbFZh8vozIxRp-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-5" target="P8JZlvMNbFZh8vozIxRp-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="P8JZlvMNbFZh8vozIxRp-5" value="данные из массивов lines, pod_sos, trains для Year" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-5" value="данные из массивов lines, pod_sos, trains, climat для Year" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1010" y="170" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-49" target="P8JZlvMNbFZh8vozIxRp-39">
@@ -194,8 +194,8 @@
         <mxCell id="P8JZlvMNbFZh8vozIxRp-60" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-58" target="P8JZlvMNbFZh8vozIxRp-3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="P8JZlvMNbFZh8vozIxRp-58" value="формирование коэффициентов от веса поездов trains" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1010" y="360" width="120" height="60" as="geometry" />
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-58" value="формирование коэффициентов от веса поездов trains и климата climat" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1010" y="330" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
