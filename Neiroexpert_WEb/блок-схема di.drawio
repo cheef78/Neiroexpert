@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-07-17T21:00:00.243Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="RS_l8jPhL4r_CYM9g5vf" version="21.6.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-17T21:05:39.232Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="8Nwfsb1SjLcCfE9-9DmF" version="21.6.2" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2812" dy="857" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -191,6 +191,12 @@
         </mxCell>
         <mxCell id="P8JZlvMNbFZh8vozIxRp-52" value="масив v_km_h_R(L)" style="rounded=1;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=middle;align=center;verticalAlign=middle;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1440" y="1260" width="159" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="P8JZlvMNbFZh8vozIxRp-54" target="P8JZlvMNbFZh8vozIxRp-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P8JZlvMNbFZh8vozIxRp-54" value="Оформить приведение в отдельную функцию с возможностью дальнейшей модификации&lt;br&gt;def&amp;nbsp; all_wheels_to_one (model_name для всех колес, func_type)&lt;br&gt;признак func_type определяет тип приведения. &lt;br&gt;В примере func_type = 1&amp;nbsp; - это среднесквадратичное приведение,&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1490" y="1032" width="560" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
